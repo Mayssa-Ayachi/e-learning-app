@@ -52,3 +52,21 @@ code {
   max-width: 300vw;
   font-family: 'Pacifico', cursive;
 }
+.boutton {
+  background-color: #ADD8E6;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.courses{
+  top: 10vh;
+  text-align: left;
+  font-size: 3rem;
+}
+
+.cours{
+  border-bottom: 1px solid #000;
+}

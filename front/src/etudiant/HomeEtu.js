@@ -1,6 +1,5 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
-import ListCourse from "./ListCourse"
 
 export default function HomeEtu() {
   return (
@@ -13,9 +12,10 @@ export default function HomeEtu() {
         <div>
             <h3 className='sidetitlee'><em>There is no substitue for hard work.<i>Thomas A. Edison</i></em></h3>
         </div>
-        <br/>
-        <Button type="button" href="/ListCourse" variant="outline-secondary">akaaka</Button>
-        
+        <br/><br/><br/><br/>
+        <center>
+        <Button type="button" href="/ListCourse" variant="primary" className='boutton'>Let's get started!</Button>
+        </center>
     </div>
     </>
 
