@@ -14,6 +14,15 @@ input {
   border-radius: 4px;
   box-sizing: border-box;
 }
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
 
 /* auth forms */
 form.signup, form.login {
