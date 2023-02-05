@@ -11,3 +11,44 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.backgroundd {
+  border: solid;
+  height: 99vh;
+  width: 98vw;
+  position: absolute;
+  top: 0;
+  background-image: url(./elearning.png );
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 0 5vh;
+}
+
+.side {
+  background-color:  #ADD8E6 ;
+  height: 100vh;
+  width: 35vw;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0.1;
+}
+
+.sidetitle {
+  top: 10vh;
+  font-weight: bold;
+  position: relative;
+  color: rgb(0, 0, 0);
+  left: 39vw;
+  max-width: 25vw;
+}
+
+.sidetitlee {
+  position: relative;
+  font-size: 1.2rem;
+  color: #BBA14A;
+  left: 33vw;
+  top: 11vh;
+  max-width: 300vw;
+  font-family: 'Pacifico', cursive;
+}
