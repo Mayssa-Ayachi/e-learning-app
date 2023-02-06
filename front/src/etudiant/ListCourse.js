@@ -28,7 +28,6 @@ export default function ListCourse() {
             <left>
             <h4>Course {cours.id}: {cours.title}</h4></left>
             <Button type="button" href={`/cours${cours.id}`} variant="primary" className='boutton'>Let's get started!</Button>
-            <Cours cours={cours} />
           </div>
         )
       })}
