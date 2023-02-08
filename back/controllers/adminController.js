@@ -5,15 +5,17 @@ const mongoose = require('mongoose')
 
 // get all Users
 const getUsers = async (req, res) => {
-  const {role} = req.body
+  // role of the required users
+  const userRole = req.body.userRole
 
-  if (role == "student"){
+  if (userRole == "student"){
     users = await Student.find({}).sort({createdAt: -1})
-  }else if (role == "teacher"){
+  }else if (userRole == "teacher"){
     users = await Teacher.find({}).sort({createdAt: -1})
   }
   res.status(200).json(users)
-}
+} 
+
 
 // get a single Student
 const getStudent = async (req, res) => {

@@ -6,7 +6,7 @@ const teacher = require('../models/teacherModel')
 const requireAuth = async (req, res, next) => {
   // verify user is authenticated
   const { authorization } = req.headers
-  const userRole = req.body.userRole
+  const role = req.body.role
 
   if (!authorization) {
     return res.status(401).json({error: 'Authorization token required'})
@@ -20,14 +20,20 @@ const requireAuth = async (req, res, next) => {
     //req.user_role is the role of the current user
     //req.user is the id of the current user
 
-    if(userRole=="admin"){
+    if(role=="admin"){
         req.user = await admin.findOne({ _id }).select('_id')  
-    }else if(userRole=="student"){
+    }else if(role=="student"){
         req.user = await student.findOne({ _id }).select('_id')   
-    }else if(userRole=="teacher"){
+    }else if(role=="teacher"){
         req.user = await teacher.findOne({ _id }).select('_id')
     }
-    next()
+    console.log(req.user)
+
+    if(!req.user){
+      throw Error("Role and Id are not compatible")
+    }else{
+      next()
+    }
 
   } catch (error) {
     console.log(error)

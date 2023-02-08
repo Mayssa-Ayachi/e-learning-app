@@ -23,7 +23,7 @@ const signupUser = async (req, res) => {
     throw Error('Email not valid')
   }
   if (!validator.isStrongPassword(password)) {
-    throw Error('Password not strong enough')
+    throw Error('Password shoud be strong : minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1')
   }
 
   if (role == "student"){
@@ -52,7 +52,7 @@ const signupUser = async (req, res) => {
   // create a token
   const token = createToken(user._id)
 
-  res.status(200).json({email, user, token})
+  res.status(200).json({email, token, role})
  }catch (error) {
   res.status(400).json({error: error.message})
 }
@@ -87,7 +87,7 @@ const loginUser = async (req, res) => {
     // create a token
     const token = createToken(user._id)
 
-    res.status(200).json({email, user, token})
+    res.status(200).json({email, token, role})
   } catch (error) {
     res.status(400).json({error: error.message})
   }
