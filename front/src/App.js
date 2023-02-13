@@ -35,6 +35,7 @@ function App() {
           />
           <Route 
             path="/teacher"
+            /*element={<Teacher/>}*/
             element={role==="teacher"? <Teacher/> : <Navigate to="/Login" />}
           />
           <Route 
