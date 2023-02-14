@@ -1,22 +1,22 @@
 import React,{useState} from 'react'
-import M from 'materialize-css'
-import {useNavigate} from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
 import { useAuthContext } from "../../hooks/useAuthContext"
 
 const Teacher = ()=>{
-    const history = useNavigate()
     const [title,setTitle] = useState("")
     const [body,setBody] = useState("")
     const [activite,setActivite] = useState("")
     const [coursID,setcoursID] = useState("63ea8f4ad56e9cdb6decfb63")
     const [valide,setValide] = useState("")
+    const [error,setError] = useState("")
 
     const {user} = useAuthContext()
 
+    
+
     const activityupload = (url) => {
         console.log("wilyeyy")
-        if(url){
+        if(url && coursID){
             fetch("/api/activity/create",{
                 method:"post",
                 headers:{
@@ -44,20 +44,28 @@ const Teacher = ()=>{
 
         
    const activityDetails = (e)=>{
-       e.preventDefault()
-       const data = new FormData()
-       data.append("file",activite)
-       data.append("upload_preset","pcd_2023")
-       data.append("cloud_name","dyizrug8d")
-       fetch("https://api.cloudinary.com/v1_1/dyizrug8d/auto/upload",{
-           method:"post",
-           body:data
-       })
-       .then(res=>res.json())
-       .then(data=>activityupload(data.url))
-       .catch(err=>{
-           console.log(err)
-       })
+
+       if(title && body && activite){
+        e.preventDefault()
+        const data = new FormData()
+        data.append("file",activite)
+        data.append("upload_preset","pcd_2023")
+        data.append("cloud_name","dyizrug8d")
+        fetch("https://api.cloudinary.com/v1_1/dyizrug8d/auto/upload",{
+            method:"post",
+            body:data
+        })
+        .then(res=>res.json())
+        .then(data=>activityupload(data.url))
+        .catch(err=>{
+            console.log(err)
+        })
+       }else{
+        setError("Please add all the fields")
+        setTimeout(()=>{setError("")}
+        , 2000)
+        throw Error("Please add all the fields")
+       }
    }
  
 
@@ -88,15 +96,10 @@ const Teacher = ()=>{
                 <span>Upload Activity</span>
                 <input type="file" onChange={(e)=>setActivite(e.target.files[0])} />
             </div>
-
-            <div className="file-path-wrapper">
-                <input className="file-path validate" type="text" />
-            </div>
             </div>
 
             <Button variant="outline-dark" onClick={activityDetails}>Submit Activity</Button>
-            {valide && <div className="valide">Activity uploaded</div>}
-
+            {(valide && <div className="valide">Activity uploaded</div>) || (error && <div className="error">{error}</div>)}
        </div>
    )
 }

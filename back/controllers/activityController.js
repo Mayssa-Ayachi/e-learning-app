@@ -16,10 +16,10 @@ const postActivity = async (req, res) => {
 
     try {
         if(!title || !body || !activ || !coursID){
-            console.log("Please add all the fields")
-            return res.status(422).json({error:"Please add all the fields"})
+            throw Error("Please add all the fields")
         }
         //req.user.password = undefined
+
         const activityy = await activity.create({title,body,activ,coursID})
         res.status(200).json(activityy)
     }catch(error){
