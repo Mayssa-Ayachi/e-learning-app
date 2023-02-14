@@ -6,17 +6,16 @@ import { useAuthContext } from "../../hooks/useAuthContext"
 
 const Teacher = ()=>{
     const history = useNavigate()
-    const [title,setTitle] = useState("gg")
-    const [body,setBody] = useState("gg")
-    const [activite,setActivite] = useState("gg")
-    const [url,setUrl] = useState("")
+    const [title,setTitle] = useState("")
+    const [body,setBody] = useState("")
+    const [activite,setActivite] = useState("")
     const [coursID,setcoursID] = useState("63ea8f4ad56e9cdb6decfb63")
+    const [valide,setValide] = useState("")
 
     const {user} = useAuthContext()
 
     const activityupload = (url) => {
-        console.log(url)
-        console.log(user.token)
+        console.log("wilyeyy")
         if(url){
             fetch("/api/activity/create",{
                 method:"post",
@@ -25,30 +24,27 @@ const Teacher = ()=>{
                     "Authorization": `Bearer ${user.token}`
                 },
                 body:JSON.stringify({
+                    role:user.role,
                     title,
                     body,
                     activ:url,
                     coursID:coursID
                 })
             }).then(res=>res.json())
-           
-            .then(data=>{
-        
-               if(data.error){
-                  M.toast({html: data.error,classes:"#c62828 red darken-3"})
-               }
-               else{
-                   M.toast({html:"Created post Successfully",classes:"#43a047 green darken-1"})
-                   history.push('/')
-               }
-            }).catch(err=>{
+            .then(()=>{
+                setValide("true")
+                setTimeout(()=>{setValide("")}
+                , 2000)
+            })
+            .catch(err=>{
                 console.log(err)
             })
         }
     }
-        
-   const activityDetails = ()=>{
 
+        
+   const activityDetails = (e)=>{
+       e.preventDefault()
        const data = new FormData()
        data.append("file",activite)
        data.append("upload_preset","pcd_2023")
@@ -58,9 +54,7 @@ const Teacher = ()=>{
            body:data
        })
        .then(res=>res.json())
-       .then(data=>{
-          setUrl(data.url)
-       }).then(()=>activityupload(url))
+       .then(data=>activityupload(data.url))
        .catch(err=>{
            console.log(err)
        })
@@ -78,13 +72,13 @@ const Teacher = ()=>{
        >
            <input 
            type="text"
-            placeholder="title"
+            placeholder="Title"
             value={title}
             onChange={(e)=>setTitle(e.target.value)}
             />
            <input
             type="text"
-             placeholder="body"
+             placeholder="Description"
              value={body}
             onChange={(e)=>setBody(e.target.value)}
              />
@@ -100,7 +94,9 @@ const Teacher = ()=>{
             </div>
             </div>
 
-            <Button variant="outline-dark" onClick={()=>{activityDetails()}}>Submit Activity</Button>
+            <Button variant="outline-dark" onClick={activityDetails}>Submit Activity</Button>
+            {valide && <div className="valide">Activity uploaded</div>}
+
        </div>
    )
 }

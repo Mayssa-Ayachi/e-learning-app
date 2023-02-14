@@ -9,7 +9,7 @@ const {
 
 
 // require auth for all workout routes
-///router.use(requireAuth)
+//router.use(requireAuth)
 
 // GET all activities
 router.get('/allactivities', getActivities)
