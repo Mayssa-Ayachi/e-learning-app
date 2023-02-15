@@ -48,7 +48,6 @@ const Uploadactivity = ()=>{
 
         
    const activityDetails = (e)=>{
-
        if(title && body && activite){
         e.preventDefault()
         const data = new FormData()

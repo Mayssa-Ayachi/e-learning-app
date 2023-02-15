@@ -13,12 +13,12 @@ const getCours = async (req,res) =>{
     
 // create Activity
 const postCours = async (req, res) => {
-    const {title,body,url,postedBy} = req.body 
-    
+    const {title,categorie,body,url} = req.body 
+    const postedBy=req.user
     try {
-        //req.user.password = undefined
+        req.user.password = undefined
 
-        const cours = await Cours.create({title,body,url,postedBy})
+        const cours = await Cours.create({title,categorie,body,url,postedBy})
         res.status(200).json(cours)
     }catch(error){
         res.status(400).json({error: error.message})
