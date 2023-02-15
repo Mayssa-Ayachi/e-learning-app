@@ -8,6 +8,8 @@ import Teacher from './pages/teacher/teacher'
 import Login from './pages/login/login'
 import Signup from './pages/signup/signup'
 import Navbaar from './components/navbar'
+import TeacherActivities from './pages/teacher/activities'
+import Uploadactivity from './pages/teacher/uploadactivity'
 
 function App() {
   
@@ -34,10 +36,21 @@ function App() {
             element={role==="student"? <Student/> : <Navigate to="/Login" />}
           />
           <Route 
+            path="/teacherActivities"
+            element={<TeacherActivities/>}
+          />
+
+          <Route 
+            path="/upload"
+            element={<Uploadactivity/>}
+            /*element={role==="teacher"? <Uploadactivity/> : <Navigate to="/Login" />}*/
+          />
+          <Route 
             path="/teacher"
             /*element={<Teacher/>}*/
             element={role==="teacher"? <Teacher/> : <Navigate to="/Login" />}
           />
+           
           <Route 
             path="/login" 
             element={!user ? <Login /> : role==="teacher"? <Navigate to="/teacher"/>

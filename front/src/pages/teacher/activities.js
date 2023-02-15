@@ -2,29 +2,29 @@ import { useEffect, useState } from "react"
 import { useAuthContext } from "../../hooks/useAuthContext"
 
 // components
-import CoursDetails from "../../components/cours"
+import ActivityDetails from "../../components/activities"
 
   const TeacherActivities = () => {
-  const [cours, setCours] = useState(null)
+  const [activities, setActivities] = useState(null)
+  const [coursID,setcoursID] = useState("63ea8f4ad56e9cdb6decfb63")
   const {user} = useAuthContext()
 
 
   useEffect(() => {
-    
-    const fetchCours = async () => {
-      const response = await fetch('/api/courses/allcourses', {
+    const fetchActivites = async () => {
+      const response = await fetch('/api/activity/allactivities', {
         headers: {'Authorization': `Bearer ${user.token}`,
         'Role':`${user.role}`}
       })
       const json = await response.json()
 
       if (response.ok) {
-        setCours(json)
+        setActivities(json)
       }
     }
 
     if (user) {
-      fetchCours()
+      fetchActivites()
     }
   }, [user])
 
@@ -32,8 +32,8 @@ import CoursDetails from "../../components/cours"
   return (
     <div className="home">
       <div className="workouts">
-        {cours && cours.map(cours => (
-          <CoursDetails cours={cours} key={cours._id} />
+        {activities && activities.map(activity => (
+          <ActivityDetails activity={activity} key={activity._id} />
         ))}
       </div>
     </div>
