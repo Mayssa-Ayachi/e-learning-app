@@ -138,13 +138,6 @@ const onSubmitForm = (e)=>{
         />
       </div>
       </div>    
-
-
-
-
-      
-      
-        
       </Modal.Body>
 
 

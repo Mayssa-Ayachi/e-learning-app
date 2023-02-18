@@ -12,6 +12,8 @@ const requireAuth = async (req, res, next) => {
     return res.status(401).json({error: 'Authorization token required'})
   }
 
+  console.log(req.user)
+
   const token = authorization.split(' ')[1]
 
   try {

@@ -1,9 +1,7 @@
-
-const requireAuth = require('../middleware/requireAuth')
 const Teacher =  require('../models/teacherModel')
 
 const getprofile = async (req,res) =>{
-    Teacher.findOne({_id:req.params.id})
+    Teacher.findOne({_id:req.user})
     .select("-password")
     .then(Teacher=>{
          profil.find({postedBy:req.params.id})

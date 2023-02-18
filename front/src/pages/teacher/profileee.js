@@ -15,7 +15,7 @@ import TeacherDetails from "../../components/profile";
   useEffect(() => {
     
     const fetchProfile = async () => {
-      const response = await fetch('/api/teacher/profile', {
+      const response = await fetch('/api/teacher/profile/', {
         headers: {'Authorization': `Bearer ${user.token}`,
         'Role':`${user.role}`}
       })

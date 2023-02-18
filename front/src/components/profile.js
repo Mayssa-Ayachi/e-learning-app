@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 
-const TeacherDetails = ({ profile}) => {
+const TeacherDetails = ({ profile }) => {
 
     return (
       <div className="teacher-details">
