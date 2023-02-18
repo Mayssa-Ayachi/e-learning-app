@@ -15,9 +15,9 @@ const getActivities = async (req,res) =>{
 const getCourseActivities = async (req,res) =>{
     const { course } = req.params
 
-    /*if (!mongoose.Types.ObjectId.isValid(course)) {
+    if (!mongoose.Types.ObjectId.isValid(course)) {
         return res.status(404).json({error: 'No such Course'})
-      }*/
+      }
 
     try{
         const Activities = await activity.find({coursID:course}).sort({createdAt: -1})

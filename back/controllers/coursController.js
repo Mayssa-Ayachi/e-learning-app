@@ -1,10 +1,16 @@
 const Cours =  require('../models/coursModel')
+const mongoose = require('mongoose')
 
 // get all Cours
 const getCours = async (req,res) =>{
+    const postedBy=req.user
+
+    if (!mongoose.Types.ObjectId.isValid(postedBy)) {
+        return res.status(404).json({error: 'No such Course'})
+      }
+
     try{
-        console.log("hii")
-        const cours = await Cours.find({}).sort({createdAt: -1})
+        const cours = await Cours.find({postedBy:postedBy}).sort({createdAt: -1})
         res.status(200).json(cours)
     }catch(error){
         res.status(400).json({error: error.message})
