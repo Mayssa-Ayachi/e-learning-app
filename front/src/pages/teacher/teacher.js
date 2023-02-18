@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
 import { useAuthContext } from "../../hooks/useAuthContext"
 
+
 // components
 import CoursDetails from "../../components/cours"
+import AjoutCours from "../../components/ajouterCours";
 
   const TeacherActivities = () => {
   const [cours, setCours] = useState(null)
@@ -30,13 +32,17 @@ import CoursDetails from "../../components/cours"
 
 
   return (
+    <>
     <div className="home">
+    <AjoutCours />
       <div className="workouts">
+
         {cours && cours.map(cours => (
           <CoursDetails cours={cours} key={cours._id} />
         ))}
       </div>
     </div>
+    </>
   )
 }
 
