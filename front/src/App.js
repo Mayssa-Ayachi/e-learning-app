@@ -8,6 +8,7 @@ import Teacher from './pages/teacher/teacher'
 import Login from './pages/login/login'
 import Signup from './pages/signup/signup'
 import Navbaar from './components/navbar'
+import TeacherStats from './pages/teacher/profileee'
 
 function App() {
   
@@ -48,7 +49,14 @@ function App() {
             element={!user ? <Signup /> : role==="teacher"? <Navigate to="/teacher"/>
             : role==="student" ? <Navigate to="/student"/> : <Navigate to="/admin"/> }
           />
+                    <Route 
+            path="/TeacherStats" 
+            element={ <TeacherStats/>
+             }
+          />
+          
         </Routes>
+        
       </div>
     </BrowserRouter>
   </div>

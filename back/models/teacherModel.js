@@ -11,7 +11,27 @@ const teacherSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  phonenumber: {
+    type: String,
+   
+  },
+  name: {
+    type: String,
+    
+  },
+  linkedin: {
+    type: String,
+    
+  },
+  university: {
+    type: String,
+    
+  },
+  field: {
+    type: String,
+    
+  },
 }, { timestamps: true })
 
 module.exports = mongoose.model('Teacher', teacherSchema)
