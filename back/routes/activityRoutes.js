@@ -5,7 +5,8 @@ const router = express.Router()
 const {
   getActivities, 
   postActivity,
-  deleteActivity
+  deleteActivity,
+  getCourseActivities
 } = require('../controllers/activityController')
 
 
@@ -18,8 +19,8 @@ router.get('/allactivities', getActivities)
 // Post activity
 router.post('/create', postActivity)
 
-// GET a single Student
-//router.get('/:id', getStudent)
+// GET course activities
+router.get('/courseactivities/:course', getCourseActivities)
 
 // DELETE a Activity
 router.delete('/:id', deleteActivity)
