@@ -8,7 +8,7 @@ import AjoutInfo from "../../components/ajouterinfo";
 import TeacherDetails from "../../components/profile";
 
   const TeacherStats = () => {
-  const [profil, setProfil] = useState(null)
+  const [profile, setProfil] = useState(null)
   const {user} = useAuthContext()
 
 
@@ -37,10 +37,9 @@ import TeacherDetails from "../../components/profile";
     <div className="home">
     <AjoutInfo />
       <div className="workouts">
-
-        { profile  => (
-          <TeacherDetails profile={profil} key={profile._id} />
-        ) }
+        { profile  &&  profile.map(profile => (
+          <TeacherDetails profile={profile} key={profile._id}  />
+        ))}
       </div>
     </div>
     </>
