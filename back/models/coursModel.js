@@ -8,6 +8,10 @@ const coursSchema = new Schema({
         type:String,
         required:true
     },
+    categorie:{
+        type:String,
+        required:true
+    },
     body:{
         type:String,
         required:true

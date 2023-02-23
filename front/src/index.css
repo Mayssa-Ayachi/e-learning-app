@@ -37,3 +37,39 @@ form.signup, form.login {
   background: #FBFBFB;
   border-radius: 4px;
 }
+
+/* Activity */
+.home{
+  margin-top: 10vh;
+}
+.workouts {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.activity-details {
+  width: 40vw;
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+.activity-details h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: var(--primary);
+}
+.activity-details p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+.activity-button{
+  position: relative;
+  margin: 4px ;
+}
