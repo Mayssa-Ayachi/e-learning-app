@@ -15,7 +15,7 @@ const CoursDetails = ({ cours }) => {
       <div className="activity-details">
         <h4>{cours.title}</h4>
         <p><strong>Description : </strong>{cours.body}</p>
-        <Link to={{pathname:"/teacherActivities"}}><Button className="activity-button" variant="outline-secondary" onClick={updateCoursID}>View</Button>{' '}</Link>
+        <Link to={{pathname:"/teacherActivities"}}><Button className="activity-button" variant="outline-secondary" onClick={updateCoursID}>View activities</Button>{' '}</Link>
 
       </div>
     )

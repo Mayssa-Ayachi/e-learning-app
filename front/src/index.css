@@ -42,7 +42,7 @@ form.signup, form.login {
 .home{
   margin-top: 10vh;
 }
-.workouts {
+.coursactivites {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

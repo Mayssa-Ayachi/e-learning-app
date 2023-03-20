@@ -3,10 +3,10 @@ import { useAuthContext } from "../../hooks/useAuthContext"
 
 
 // components
-import CoursDetails from "../../components/cours"
+import CoursDetails from "../../components/coursDetails"
 import AjoutCours from "../../components/ajouterCours";
 
-  const TeacherActivities = () => {
+  const TeacherCourses = () => {
   const [cours, setCours] = useState(null)
   const {user} = useAuthContext()
 
@@ -35,7 +35,7 @@ import AjoutCours from "../../components/ajouterCours";
     <>
     <div className="home">
     <AjoutCours />
-      <div className="workouts">
+      <div className="coursactivites">
 
         {cours && cours.map(cours => (
           <CoursDetails cours={cours} key={cours._id} />
@@ -46,4 +46,4 @@ import AjoutCours from "../../components/ajouterCours";
   )
 }
 
-export default TeacherActivities
+export default TeacherCourses

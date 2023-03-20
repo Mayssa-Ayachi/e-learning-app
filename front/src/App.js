@@ -4,12 +4,11 @@ import { useAuthContext } from './hooks/useAuthContext'
 // pages & components
 import Admin from './pages/admin/admin'
 import Student from './pages/student/student'
-import Teacher from './pages/teacher/teacher'
+import TeacherCourses from './pages/teacher/courses'
 import Login from './pages/login/login'
 import Signup from './pages/signup/signup'
 import Navbaar from './components/navbar'
 import TeacherActivities from './pages/teacher/activities'
-import Uploadactivity from './pages/teacher/uploadactivity'
 
 function App() {
   
@@ -41,14 +40,9 @@ function App() {
           />
 
           <Route 
-            path="/upload"
-            element={<Uploadactivity/>}
-            /*element={role==="teacher"? <Uploadactivity/> : <Navigate to="/Login" />}*/
-          />
-          <Route 
-            path="/teacher"
-            /*element={<Teacher/>}*/
-            element={role==="teacher"? <Teacher/> : <Navigate to="/Login" />}
+            path="/teacherCourses"
+            element={<TeacherCourses/>}
+            /*element={role==="teacher"? <TeacherCourses/> : <Navigate to="/Login" />}*/
           />
            
           <Route 

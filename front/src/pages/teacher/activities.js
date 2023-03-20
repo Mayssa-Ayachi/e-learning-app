@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useActivityContext } from "../../hooks/useActivityContext"
+import AjoutActivite from "../../components/ajouteractivite";
 
 // components
 import ActivityDetails from "../../components/activities"
 
   const TeacherActivities = () => {
   const [activities, setActivities] = useState(null)
-  //const [coursID,setcoursID] = useState("63ea8f4ad56e9cdb6decfb63")
   const {user} = useAuthContext()
   const {coursID} = useActivityContext()
 
@@ -35,7 +35,8 @@ import ActivityDetails from "../../components/activities"
 
   return (
     <div className="home">
-      <div className="workouts">
+      <AjoutActivite />
+      <div className="coursactivites">
         {activities && activities.map(activity => (
           <ActivityDetails activity={activity} key={activity._id} />
         ))}
