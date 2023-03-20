@@ -43,6 +43,7 @@ const AjoutActivite = () => {
                 setValide("true")
                 setTimeout(()=>{setValide("")}
                 , 2000)
+                
             })
             .catch(err=>{
                 console.log(err)
@@ -76,14 +77,14 @@ const AjoutActivite = () => {
         throw Error("Please add all the fields")
        }
    }
- 
+    const reload=()=>window.location.reload();
 
     return (
         <Fragment>
         <button className="ajouter ajoutdossier" onClick={handleShow} >Add an activity</button>
         
-        <Modal show={show} onHide={handleClose} backdrop="static">
-            <Modal.Header closeButton>
+        <Modal show={show} onHide={handleClose} onExit={reload} backdrop="static">
+            <Modal.Header closeButton >
             <Modal.Title>Add an activity</Modal.Title>
             </Modal.Header>
 
@@ -135,7 +136,7 @@ const AjoutActivite = () => {
     <Modal.Footer>
     <Button variant="dark" data-bs-dismiss="modal"  onClick={handleClose}>Cancel</Button>
     <Button variant="light" id="valider"  
-    onClick={activityDetails}>Submit Activity</Button>
+    onClick={activityDetails}>Submit</Button>
     {(valide && <div className="valide">Activity uploaded</div>) || (error && <div className="error">{error}</div>)}
     </Modal.Footer>
     </Modal>

@@ -9,6 +9,7 @@ const CoursDetails = ({ cours }) => {
   const updateCoursID= ()=>{
     console.log(cours)
     // update the coursID context
+    localStorage.setItem('coursID', JSON.stringify(cours._id))
     dispatch({type: 'Activity', payload: cours._id })
  }
     return (

@@ -1,4 +1,4 @@
-import { createContext, useReducer } from 'react'
+import { createContext, useReducer, useEffect } from 'react'
 
 export const ActivityContext = createContext()
 
@@ -12,15 +12,20 @@ export const activityReducer = (state, action) => {
   }
 }
 
-
-
 export const ActivityContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(activityReducer, { 
     coursID: null
   })
+
+  useEffect(() => {
+    const coursID = JSON.parse(localStorage.getItem('coursID'))
   
-  console.log('activityContext state:', state)
-  
+    if (coursID) {
+      dispatch({ type: 'Activity', payload: coursID }) 
+    }
+  }, [])
+
+  console.log('AuthActivity state:', state)
   return (
     <ActivityContext.Provider value={{ ...state, dispatch }}>
       { children }
