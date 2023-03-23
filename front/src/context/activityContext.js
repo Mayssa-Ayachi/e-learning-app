@@ -5,7 +5,6 @@ export const ActivityContext = createContext()
 export const activityReducer = (state, action) => {
   switch (action.type) {
     case 'Activity':
-      console.log(action.payload)
       return { coursID: action.payload }
     default:
       return state

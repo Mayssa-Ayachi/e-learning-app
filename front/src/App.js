@@ -9,12 +9,12 @@ import Login from './pages/login/login'
 import Signup from './pages/signup/signup'
 import Navbaar from './components/navbar'
 import TeacherActivities from './pages/teacher/activities'
+import TeacherProfile from './pages/teacher/profile'
 
 function App() {
   
   const { user } = useAuthContext()
   const { role } = {...user}
-  console.log(role)
 
   return (
     <div className="App">
@@ -27,13 +27,21 @@ function App() {
               element={<Navigate to="/Login" />}
           />
           <Route 
-            path="/admin"
-            element={role==="admin"? <Admin/> : <Navigate to="/Login" />}
+            path="/login" 
+            element={!user ? <Login /> : role==="teacher"? <Navigate to="/teacher"/>
+            : role==="student" ? <Navigate to="/student"/> : <Navigate to="/admin"/> }
           />
           <Route 
-            path="/student"
-            element={role==="student"? <Student/> : <Navigate to="/Login" />}
+            path="/signup" 
+            element={!user ? <Signup /> : role==="teacher"? <Navigate to="/teacher"/>
+            : role==="student" ? <Navigate to="/student"/> : <Navigate to="/admin"/> }
           />
+
+          <Route 
+            path="/teacherProfile"
+            element={<TeacherProfile/>}
+          />
+
           <Route 
             path="/teacherActivities"
             element={<TeacherActivities/>}
@@ -44,16 +52,14 @@ function App() {
             element={<TeacherCourses/>}
             /*element={role==="teacher"? <TeacherCourses/> : <Navigate to="/Login" />}*/
           />
-           
+
           <Route 
-            path="/login" 
-            element={!user ? <Login /> : role==="teacher"? <Navigate to="/teacher"/>
-            : role==="student" ? <Navigate to="/student"/> : <Navigate to="/admin"/> }
+            path="/admin"
+            element={role==="admin"? <Admin/> : <Navigate to="/Login" />}
           />
           <Route 
-            path="/signup" 
-            element={!user ? <Signup /> : role==="teacher"? <Navigate to="/teacher"/>
-            : role==="student" ? <Navigate to="/student"/> : <Navigate to="/admin"/> }
+            path="/student"
+            element={role==="student"? <Student/> : <Navigate to="/Login" />}
           />
         </Routes>
       </div>
