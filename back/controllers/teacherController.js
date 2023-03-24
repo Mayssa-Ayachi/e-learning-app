@@ -14,8 +14,8 @@ const getprofile = async (req,res) =>{
     
 // hedhi nbadloha
 const updateProfile = async (req, res) => {
-    const { name, phonenumber, linkedin, university, field,id } = req.body;
-    
+    const { name, phonenumber, linkedin, university, field  } = req.body;
+    const id = req.user;
     try {
       if (!name || !phonenumber || !linkedin || !university || !field) {
         throw Error("Please add all the fields");

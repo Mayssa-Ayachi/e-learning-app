@@ -9,7 +9,7 @@ import Login from './pages/login/login'
 import Signup from './pages/signup/signup'
 import Navbaar from './components/navbar'
 import TeacherActivities from './pages/teacher/activities'
-import TeacherProfile from './pages/teacher/profile'
+import TeacherProfilePagee from './components/profile'
 
 function App() {
   
@@ -40,7 +40,7 @@ function App() {
 
           <Route 
             path="/teacherProfile"
-            element={role==="teacher"? <TeacherProfile/> : <Navigate to="/Login" />}
+            element={role==="teacher"? <TeacherProfilePagee/> : <Navigate to="/Login" />}
           />
 
           <Route 
