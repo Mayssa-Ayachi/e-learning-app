@@ -19,7 +19,8 @@ function App() {
   return (
     <div className="App">
     <BrowserRouter>
-      <Navbaar />
+    <Navbaar />
+       
       <div className="pages">
         <Routes>
           <Route 
@@ -28,12 +29,12 @@ function App() {
           />
           <Route 
             path="/login" 
-            element={!user ? <Login /> : role==="teacher"? <Navigate to="/teacher"/>
+            element={!user ? <Login /> : role==="teacher"? <Navigate to="/teacherProfile"/>
             : role==="student" ? <Navigate to="/student"/> : <Navigate to="/admin"/> }
           />
           <Route 
             path="/signup" 
-            element={!user ? <Signup /> : role==="teacher"? <Navigate to="/teacher"/>
+            element={!user ? <Signup /> : role==="teacher"? <Navigate to="/teacherProfile"/>
             : role==="student" ? <Navigate to="/student"/> : <Navigate to="/admin"/> }
           />
 
@@ -44,12 +45,12 @@ function App() {
 
           <Route 
             path="/teacherActivities"
-            element={<TeacherActivities/>}
-          />
+            element={ <TeacherActivities/> }
+           />
 
           <Route 
             path="/teacherCourses"
-            element={<TeacherCourses/>}
+            element={ <TeacherCourses/> }
             /*element={role==="teacher"? <TeacherCourses/> : <Navigate to="/Login" />}*/
           />
 
