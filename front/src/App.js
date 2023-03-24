@@ -9,7 +9,7 @@ import Login from './pages/login/login'
 import Signup from './pages/signup/signup'
 import Navbaar from './components/navbar'
 import TeacherActivities from './pages/teacher/activities'
-import TeacherProfile from './pages/teacher/profile'
+import TeacherProfilePage from './components/Profile'
 
 function App() {
   
@@ -39,7 +39,7 @@ function App() {
 
           <Route 
             path="/teacherProfile"
-            element={<TeacherProfile/>}
+            element={<TeacherProfilePage/>}
           />
 
           <Route 

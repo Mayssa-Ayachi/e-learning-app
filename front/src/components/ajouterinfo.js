@@ -22,7 +22,7 @@ const AjoutInfo = () => {
   const addProfile = () => {
     
         fetch("/api/teacher/create",{
-            method:"post",
+            method:"put",
             headers:{
                 "Content-Type":"application/json",
                 "Authorization": `Bearer ${user.token}`,
@@ -34,6 +34,10 @@ const AjoutInfo = () => {
                 linkedin,
                 university,
                 field,
+                id : user.id,
+                
+                
+          
 
             
             })
