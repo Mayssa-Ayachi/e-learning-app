@@ -4,12 +4,14 @@ const router = express.Router()
 
 const {
   getActivities, 
-  postActivity
+  postActivity,
+  deleteActivity,
+  getCourseActivities
 } = require('../controllers/activityController')
 
 
 // require auth for all workout routes
-//router.use(requireAuth)
+router.use(requireAuth)
 
 // GET all activities
 router.get('/allactivities', getActivities)
@@ -17,13 +19,11 @@ router.get('/allactivities', getActivities)
 // Post activity
 router.post('/create', postActivity)
 
-// GET a single Student
-//router.get('/:id', getStudent)
+// GET course activities
+router.get('/courseactivities/:course', getCourseActivities)
 
-// DELETE a Student
-//router.delete('/:id', deleteStudent)
+// DELETE a Activity
+router.delete('/:id', deleteActivity)
 
-// UPDATE a Student
-//router.patch('/:id', updateStudent)
 
 module.exports = router

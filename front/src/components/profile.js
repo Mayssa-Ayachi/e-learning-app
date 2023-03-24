@@ -11,8 +11,7 @@ const TeacherDetails = ({ profile }) => {
         <p><strong>Description : </strong>{profile.linkedin}</p>
         <p><strong>Description : </strong>{profile.university}</p>
         <p><strong>Description : </strong>{profile.field}</p>
-        
-        <Button className="activity-button" variant="outline-secondary">View</Button>{' '}
+        <p><strong>Description : </strong>{profile.email}</p>
 
       </div>
     )

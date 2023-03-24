@@ -3,28 +3,25 @@ const requireAuth = require('../middleware/requireAuth')
 const router = express.Router()
 
 const {
-  
-  postProfile, getprofile, updateProfile
-} = require('../controllers/teacherController')
-   
+  getCours, 
+  postCours
+} = require('../controllers/coursController')
 
 
 // require auth for all workout routes
 router.use(requireAuth)
 
-// GET  profil
-router.get('/profile', getprofile)
+// GET all activities
+router.get('/allcourses', getCours)
 
 // Post activity
-router.put('/create', updateProfile)
+router.post('/create', postCours)
 
 // GET a single Student
 //router.get('/:id', getStudent)
 
-// DELETE a Student
-//router.delete('/:id', deleteStudent)
+// DELETE a Activity
+//router.delete('/:id', deleteActivity)
 
-// UPDATE a Student
-//router.patch('/:id', updateStudent)
 
 module.exports = router
