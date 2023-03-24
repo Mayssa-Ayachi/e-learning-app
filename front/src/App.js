@@ -10,7 +10,6 @@ import Signup from './pages/signup/signup'
 import Navbaar from './components/navbar'
 import TeacherActivities from './pages/teacher/activities'
 import TeacherProfile from './pages/teacher/profile'
-import TeacherNavbar from './components/teacherNavbar'
 
 function App() {
   
