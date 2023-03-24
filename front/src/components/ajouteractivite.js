@@ -1,15 +1,16 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState  } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useAuthContext } from "../hooks/useAuthContext"
 import { useActivityContext } from "../hooks/useActivityContext"
+import UploadWidget from "./uploadwidget";
 
 const AjoutActivite = () => {
     const [title,setTitle] = useState("")
     const [body,setBody] = useState("")
-    const [activite,setActivite] = useState("")
     const [valide,setValide] = useState("")
     const [error,setError] = useState("")
+    const [url,setUrl] = useState(null)
     const {coursID} = useActivityContext()
     const {user} = useAuthContext()
 
@@ -18,12 +19,11 @@ const AjoutActivite = () => {
     const handleShow = () => setShow(true);
 
 
-
-
-    const activityupload = (url) => {
+    const activityupload = (e) => {
         console.log("wilyeyy")
-        
-        if(url && coursID){
+        e.preventDefault()
+        console.log(url)
+        if(title && body && url && coursID){
             fetch("/api/activity/create",{
                 method:"post",
                 headers:{
@@ -49,39 +49,19 @@ const AjoutActivite = () => {
                 console.log(err)
             })
         }else{
-            throw Error("url || coursID are missing")
-        }
+            setError("Please add all the fields")
+            setTimeout(()=>{setError("")}
+            , 2000)
+            throw Error("Please add all the fields")
+           }
     }
 
-        
-   const activityDetails = (e)=>{
-       if(title && body && activite){
-        e.preventDefault()
-        const data = new FormData()
-        data.append("file",activite)
-        data.append("upload_preset","pcd_2023")
-        data.append("cloud_name","dyizrug8d")
-        fetch("https://api.cloudinary.com/v1_1/dyizrug8d/auto/upload",{
-            method:"post",
-            body:data
-        })
-        .then(res=>res.json())
-        .then(data=>activityupload(data.url))
-        .catch(err=>{
-            console.log(err)
-        })
-       }else{
-        setError("Please add all the fields")
-        setTimeout(()=>{setError("")}
-        , 2000)
-        throw Error("Please add all the fields")
-       }
-   }
+ 
     const reload=()=>window.location.reload();
 
     return (
         <Fragment>
-        <button className="ajouter ajoutdossier" onClick={handleShow} >Add an activity</button>
+        <button onClick={handleShow} >Add an activity</button>
         
         <Modal show={show} onHide={handleClose} onExit={reload} backdrop="static">
             <Modal.Header closeButton >
@@ -116,18 +96,7 @@ const AjoutActivite = () => {
         </div>
         </div>
 
-        <div className="row">
-        <div className="input-group mb-3">
-        <span className="input-group-text ">Upload Activity:</span>
-
-            <input
-            type="file"
-            className="form-control"
-            onChange={(e)=>setActivite(e.target.files[0])}
-            />
-        </div>
-        </div>  
-
+       <UploadWidget changeURL={url=>setUrl(url)}/>
         
             
         </Modal.Body>
@@ -136,7 +105,7 @@ const AjoutActivite = () => {
     <Modal.Footer>
     <Button variant="dark" data-bs-dismiss="modal"  onClick={handleClose}>Cancel</Button>
     <Button variant="light" id="valider"  
-    onClick={activityDetails}>Submit</Button>
+    onClick={activityupload}>Submit</Button>
     {(valide && <div className="valide">Activity uploaded</div>) || (error && <div className="error">{error}</div>)}
     </Modal.Footer>
     </Modal>
