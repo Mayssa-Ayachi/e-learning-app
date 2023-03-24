@@ -10,6 +10,7 @@ import Signup from './pages/signup/signup'
 import Navbaar from './components/navbar'
 import TeacherActivities from './pages/teacher/activities'
 import TeacherProfile from './pages/teacher/profile'
+import TeacherNavbar from './components/teacherNavbar'
 
 function App() {
   
@@ -19,7 +20,8 @@ function App() {
   return (
     <div className="App">
     <BrowserRouter>
-      <Navbaar />
+    <Navbaar />
+       
       <div className="pages">
         <Routes>
           <Route 
@@ -28,28 +30,28 @@ function App() {
           />
           <Route 
             path="/login" 
-            element={!user ? <Login /> : role==="teacher"? <Navigate to="/teacher"/>
+            element={!user ? <Login /> : role==="teacher"? <Navigate to="/teacherProfile"/>
             : role==="student" ? <Navigate to="/student"/> : <Navigate to="/admin"/> }
           />
           <Route 
             path="/signup" 
-            element={!user ? <Signup /> : role==="teacher"? <Navigate to="/teacher"/>
+            element={!user ? <Signup /> : role==="teacher"? <Navigate to="/teacherProfile"/>
             : role==="student" ? <Navigate to="/student"/> : <Navigate to="/admin"/> }
           />
 
           <Route 
             path="/teacherProfile"
-            element={<TeacherProfile/>}
+            element={role==="teacher"? <TeacherProfile/> : <Navigate to="/Login" />}
           />
 
           <Route 
             path="/teacherActivities"
-            element={<TeacherActivities/>}
-          />
+            element={ <TeacherActivities/> }
+           />
 
           <Route 
             path="/teacherCourses"
-            element={<TeacherCourses/>}
+            element={ <TeacherCourses/> }
             /*element={role==="teacher"? <TeacherCourses/> : <Navigate to="/Login" />}*/
           />
 
