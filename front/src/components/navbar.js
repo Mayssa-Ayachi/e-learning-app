@@ -8,7 +8,6 @@ import { useAuthContext } from '../hooks/useAuthContext'
 const Navbaar = () => {
   const { logout } = useLogout()
   const { user } = useAuthContext()
-  const { role } = {...user}
 
   const handleClick = () => {
     logout()
@@ -18,25 +17,18 @@ const Navbaar = () => {
     <Navbar bg="light" fixed="top" variant="light">
         <Container>
           <Navbar.Brand>E-learning-app</Navbar.Brand>
-          {user && role==="teacher" && (
-            <>
-              <Nav className="justify-content-center">
-              <Nav.Link href="/teacherProfile">Profile</Nav.Link>
-              <Nav.Link href="/teacherCourses">Courses</Nav.Link>
+          {user && (
+          <Nav className="justify-content-end  d-flex align-items-center">
+            <span className="mx-2">{user.email}</span>
+            <Button variant="outline-dark" onClick={handleClick}>Logout</Button>
             </Nav>
-            <Nav className="justify-content-end  d-flex align-items-center">
-              <span className="mx-2">{user.email}</span>
-              <Button variant="outline-dark" onClick={handleClick}>Logout</Button>
-              </Nav>
-            </>
-           
           )}
            
           {!user && (
             <Nav className="justify-content-end">
             <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="/signup">Signup</Nav.Link>
-           
+            <Nav.Link href="/teacherActivities">activities</Nav.Link>
             </Nav>
           )}    
           

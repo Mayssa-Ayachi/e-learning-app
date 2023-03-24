@@ -4,7 +4,7 @@ import { useActivityContext } from "../../hooks/useActivityContext"
 import AjoutActivite from "../../components/ajouteractivite";
 
 // components
-import ActivityDetails from "../../components/activitiesDetails"
+import ActivityDetails from "../../components/activities"
 
   const TeacherActivities = () => {
   const [activities, setActivities] = useState(null)

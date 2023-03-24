@@ -43,21 +43,19 @@ form.signup, form.login {
   margin-top: 10vh;
 }
 .coursactivites {
-  margin-top: 3vh;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
 }
 .activity-details {
-  width: 30vw;
-  height: 40vh;
+  width: 40vw;
   background: #fff;
   border-radius: 4px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 20px auto;
+  padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
 }
@@ -73,13 +71,5 @@ form.signup, form.login {
 }
 .activity-button{
   position: relative;
-  margin: 1vh ;
-}
-.image{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 2vh;
-  width: 70%;
-  height: 60%;
+  margin: 4px ;
 }
