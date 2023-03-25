@@ -7,7 +7,7 @@ label, input {
 }
 input {
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 0px;
   margin-bottom: 20px;
   width: 100%;
   border: 1px solid #ddd;
@@ -15,17 +15,19 @@ input {
   box-sizing: border-box;
 }
 div.error {
-  padding: 10px;
+  padding: 8px;
   background: #ffefef;
+  border-radius: 5px;
+  position: relative;
+  margin: 0px 100px 10px 100px;
 
-  border-radius: 4px;
-  margin: 20px 0;
 }
 div.valide {
   padding: 10px;
   background: #e2fbe4;
-  border-radius: 4px;
-  margin: 20px 0;
+  border-radius: 5px;
+  position: relative;
+  margin: 0px 100px 10px 100px;
 }
 
 
@@ -83,3 +85,17 @@ form.signup, form.login {
   width: 70%;
   height: 60%;
 }
+.upload{
+  position: relative;
+  margin-left: 188px;
+}
+.centre{
+  position: relative;
+  margin-left: 160px;
+}
+
+
+
+
+
+
