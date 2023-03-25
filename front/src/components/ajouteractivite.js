@@ -11,6 +11,7 @@ const AjoutActivite = () => {
     const [valide,setValide] = useState("")
     const [error,setError] = useState("")
     const [url,setUrl] = useState(null)
+    const [type,setType] = useState(null)
     const {coursID} = useActivityContext()
     const {user} = useAuthContext()
 
@@ -23,7 +24,7 @@ const AjoutActivite = () => {
         console.log("wilyeyy")
         e.preventDefault()
         console.log(url)
-        if(title && body && url && coursID){
+        if(title && body && url && coursID && type){
             fetch("/api/activity/create",{
                 method:"post",
                 headers:{
@@ -36,7 +37,8 @@ const AjoutActivite = () => {
                     title,
                     body,
                     activ:url,
-                    coursID:coursID
+                    coursID:coursID,
+                    type
                 })
             }).then(res=>res.json())
             .then(()=>{
@@ -96,7 +98,7 @@ const AjoutActivite = () => {
         </div>
         </div>
 
-       <UploadWidget changeURL={url=>setUrl(url)}/>
+       <UploadWidget changeURL={url=>setUrl(url)} changeType={type=>setType(type)}/>
         
             
         </Modal.Body>

@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useAuthContext } from './hooks/useAuthContext'
-
 // pages & components
 import Admin from './pages/admin/admin'
 import Student from './pages/student/student'
@@ -10,6 +9,8 @@ import Signup from './pages/signup/signup'
 import Navbaar from './components/navbar'
 import TeacherActivities from './pages/teacher/activities'
 import TeacherProfilePagee from './components/profile'
+import ActivityViewer from './pages/teacher/viewActivity'
+
 
 function App() {
   
@@ -53,7 +54,11 @@ function App() {
             element={ <TeacherCourses/> }
             /*element={role==="teacher"? <TeacherCourses/> : <Navigate to="/Login" />}*/
           />
-
+<         Route 
+            path="/viewActivity"
+            element={ <ActivityViewer/> }
+            /*element={role==="teacher"? <TeacherCourses/> : <Navigate to="/Login" />}*/
+          />
           <Route 
             path="/admin"
             element={role==="admin"? <Admin/> : <Navigate to="/Login" />}
@@ -65,7 +70,7 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>
-  </div>
+  </div> 
   );
 }
 

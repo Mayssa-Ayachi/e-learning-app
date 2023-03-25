@@ -16,6 +16,7 @@ const UploadWidget = (props) => {
         if ( error || result.event === 'success' ) {
           console.log(result);
           props.changeURL(result.info.url);
+          props.changeType(result.info.format);
         }
       })
   })
