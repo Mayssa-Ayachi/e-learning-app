@@ -38,7 +38,7 @@ import ActivityDetails from "../../components/activitiesDetails"
       <AjoutActivite />
       <div className="coursactivites">
         {activities && activities.map(activity => (
-          <ActivityDetails activity={activity} key={activity._id} />
+          <ActivityDetails navigation activity={activity} key={activity._id} />
         ))}
       </div>
     </div>

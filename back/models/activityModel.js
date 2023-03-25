@@ -19,6 +19,10 @@ const activitySchema = new Schema({
     coursID:{
        type:ObjectId,
        ref:"cours"
+    },
+    type:{
+        type:String,
+        required:true
     }
 },{timestamps:true})
 

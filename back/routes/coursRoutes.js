@@ -4,7 +4,7 @@ const router = express.Router()
 
 const {
   getCours, 
-  postCours
+  postCours,getCoursesSearch
 } = require('../controllers/coursController')
 
 
@@ -13,6 +13,8 @@ router.use(requireAuth)
 
 // GET all activities
 router.get('/allcourses', getCours)
+router.get('/list', getCoursesSearch)
+
 
 // Post activity
 router.post('/create', postCours)
