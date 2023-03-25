@@ -7,7 +7,15 @@ const PdfViewer = (url) => {
     return (
     <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
 
-    <Viewer fileUrl={url}/>;
+    <div
+        style={{
+            border: '1px solid rgba(0, 0, 0, 0.3)',
+            height: '95vh',
+            marginTop : '7.25vh'
+        }}
+    >
+        <Viewer fileUrl={url.url} />
+    </div>
     
     </Worker>);
 };
