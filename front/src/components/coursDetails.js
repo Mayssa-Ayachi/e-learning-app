@@ -14,6 +14,7 @@ const CoursDetails = ({ cours }) => {
  }
     return (
       <div className="activity-details">
+        <img className="image" alt="course" src={cours.url}></img>
         <h4>{cours.title}</h4>
         <p><strong>Description : </strong>{cours.body}</p>
         <Link to={{pathname:"/teacherActivities"}}><Button className="activity-button" variant="outline-secondary" onClick={updateCoursID}>View activities</Button>{' '}</Link>

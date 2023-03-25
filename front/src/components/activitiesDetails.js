@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 
-const ActivityDetails = ({ activity }) => {
+const ActivityDetails = ({ activity}) => {
 
     return (
       <div className="activity-details">
