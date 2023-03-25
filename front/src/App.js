@@ -9,7 +9,7 @@ import Login from './pages/login/login'
 import Signup from './pages/signup/signup'
 import Navbaar from './components/navbar'
 import TeacherActivities from './pages/teacher/activities'
-import TeacherProfilePagee from './components/profile'
+import TeacherProfilePagee from './components/Profile'
 
 function App() {
   
