@@ -94,7 +94,13 @@ form.signup, form.login {
   margin-left: 160px;
 }
 
-
+.rechercheajout {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 5vh;
+  margin-top: 1vh;
+  margin-left: 3vh;
+}
 
 
 

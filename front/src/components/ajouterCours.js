@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { GoPlus } from "react-icons/go";
 import { useAuthContext } from "../hooks/useAuthContext"
 import UploadWidget from "./uploadwidget";
 
@@ -56,7 +57,7 @@ import UploadWidget from "./uploadwidget";
 
     return (
       <Fragment>
-        <Button onClick={handleShow} className="activity-button" variant="outline-secondary">Add Course</Button>
+        <button onClick={handleShow} className="activity-button" variant="outline-secondary"><GoPlus color="#BBA14A" fontSize="1.5em" /></button>
 
         <Modal show={show} onHide={handleClose} onExit={reload} backdrop="static">
           <Modal.Header closeButton>
