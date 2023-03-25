@@ -1,5 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { Fragment, useState } from "react";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
