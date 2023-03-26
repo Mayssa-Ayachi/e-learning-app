@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
@@ -16,6 +16,29 @@ const TeacherProfilePagee = () => {
   const [university, setUniversity] = useState("");
   const [field, setField] = useState("");
   const { user } = useAuthContext();
+
+  useEffect(() => {
+    fetch('/api/teacher/profile', {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+        Role: `${user.role}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setTeacher(data);
+        setLinkedin(data.linkedin);
+        setField(data.field);
+        setName(data.name);
+        setPhonenumber(data.phonenumber);
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },);
 
   
 
@@ -89,7 +112,7 @@ const TeacherProfilePagee = () => {
   <Form.Control
     type="text"
     placeholder={teacher.name}
-    value={name}
+    
     onChange={(e) => setName(e.target.value)}
     style={{ borderRadius: "5px", border: "none", boxShadow: "none" }}
   />
@@ -111,7 +134,7 @@ const TeacherProfilePagee = () => {
   <Form.Control
     type="text"
     placeholder={teacher.linkedin}
-    value={linkedin}
+    defaultValue={linkedin}
     onChange={(e) => setLinkedin(e.target.value)}
     style={{ borderRadius: "5px", border: "none", boxShadow: "none" }}
   />

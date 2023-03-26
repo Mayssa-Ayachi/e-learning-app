@@ -3,6 +3,7 @@ const Teacher =  require('../models/teacherModel')
 const getprofile = async (req,res) =>{
     try{
         const teacher = await Teacher.findById(req.user).select("-password");
+        
         res.status(200).json(teacher)
         console.log(teacher)
     }
