@@ -11,6 +11,7 @@ const AjoutActivite = () => {
     const [valide,setValide] = useState("")
     const [error,setError] = useState("")
     const [url,setUrl] = useState(null)
+    const [type,setType] = useState(null)
     const {coursID} = useActivityContext()
     const {user} = useAuthContext()
 
@@ -23,7 +24,7 @@ const AjoutActivite = () => {
         console.log("wilyeyy")
         e.preventDefault()
         console.log(url)
-        if(title && body && url && coursID){
+        if(title && body && url && coursID && type){
             fetch("/api/activity/create",{
                 method:"post",
                 headers:{
@@ -36,7 +37,8 @@ const AjoutActivite = () => {
                     title,
                     body,
                     activ:url,
-                    coursID:coursID
+                    coursID:coursID,
+                    type
                 })
             }).then(res=>res.json())
             .then(()=>{
@@ -61,53 +63,65 @@ const AjoutActivite = () => {
 
     return (
         <Fragment>
-        <button onClick={handleShow} >Add an activity</button>
+        <Button onClick={handleShow} className="activity-button" variant="outline-secondary">Add an activity</Button>
         
         <Modal show={show} onHide={handleClose} onExit={reload} backdrop="static">
             <Modal.Header closeButton >
+            <div className="centre">
             <Modal.Title>Add an activity</Modal.Title>
+            </div>
             </Modal.Header>
 
 
             <Modal.Body> 
             <div className="row">
-            <div className="input-group mb-3">
-            <span className="input-group-text ">Title :</span>
+          <div class="input-group mb-3">
+          <div class="input-group-prepend ">
+            <span class="input-group-text" id="inputGroup-sizing-default">Title :</span>
+          </div>
 
-            <input
+          <input
             type="text"
-            className="form-control"
+            class="form-control"
             placeholder="Title"
+            aria-describedby="inputGroup-sizing-default"
             onChange={e => setTitle(e.target.value)}
-            />
+          />
         </div>
         </div>
         
         <div className="row">
         <div className="input-group mb-3">
-        <span className="input-group-text ">Description:</span>
+        <div className="input-group-prepend ">
+            <span className="input-group-text" id="inputGroup-sizing-default">Description :</span>
+          </div>
 
                 <input
             type="text"
             className="form-control"
             placeholder="Description"
-            onChange={e =>setBody(e.target.value)}
-            />
+            aria-describedby="inputGroup-sizing-default"
+            onChange={e => setBody(e.target.value)}
+          />
         </div>
-        </div>
+        </div>   
 
-       <UploadWidget changeURL={url=>setUrl(url)}/>
+        <div className="upload">
+        <UploadWidget changeURL={url=>setUrl(url)} changeType={type=>setType(type)}/>
+        </div>
         
             
         </Modal.Body>
 
 
     <Modal.Footer>
-    <Button variant="dark" data-bs-dismiss="modal"  onClick={handleClose}>Cancel</Button>
-    <Button variant="light" id="valider"  
-    onClick={activityupload}>Submit</Button>
-    {(valide && <div className="valide">Activity uploaded</div>) || (error && <div className="error">{error}</div>)}
+    
+    <Button variant="outline-secondary"className="activity-button" id="valider"  
+  onClick={activityupload}>Submit</Button>
+  <Button variant="dark" data-bs-dismiss="modal"  onClick={handleClose}>Cancel</Button>
+    
     </Modal.Footer>
+    {(valide && <div className="valide"><center>Activity uploaded</center></div>) || (error && <div className="error"><center>{error}</center></div>)}
     </Modal>
     
         </Fragment>

@@ -3,6 +3,7 @@ const Teacher =  require('../models/teacherModel')
 const getprofile = async (req,res) =>{
     try{
         const teacher = await Teacher.findById(req.user).select("-password");
+        
         res.status(200).json(teacher)
         console.log(teacher)
     }
@@ -14,8 +15,8 @@ const getprofile = async (req,res) =>{
     
 // hedhi nbadloha
 const updateProfile = async (req, res) => {
-    const { name, phonenumber, linkedin, university, field } = req.body;
-    const id =req.user;
+    const { name, phonenumber, linkedin, university, field  } = req.body;
+    const id = req.user;
     try {
       if (!name || !phonenumber || !linkedin || !university || !field) {
         throw Error("Please add all the fields");

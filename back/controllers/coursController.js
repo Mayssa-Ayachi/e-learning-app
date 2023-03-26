@@ -16,6 +16,32 @@ const getCours = async (req,res) =>{
         res.status(400).json({error: error.message})
     }    
 }
+
+const getCoursesSearch = async (req, res) => {
+    const postedBy=req.user
+    if (!mongoose.Types.ObjectId.isValid(postedBy)) {
+        return res.status(404).json({error: 'No such Course'})
+      }
+
+    try {
+      const { q } = req.query;
+      const keys = ["title","categorie","body"];
+      const allcourses= await Cours.find({postedBy:postedBy}).sort({createdAt: -1})
+      const rows = allcourses.rows;
+
+      const search = (data) => {
+        return data.filter((item) =>
+          keys.some((key) => item[key].toString().toLowerCase().includes(q))
+        );
+      };
+
+      q ? res.json(search(allcourses)) : res.json(allcourses);
+      console.log(res.json)
+      console.log("kkkkkkkkkkkkkkkkkk")
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
     
 // create Activity
 const postCours = async (req, res) => {
@@ -49,4 +75,4 @@ const postCours = async (req, res) => {
     res.status(200).json(Activity)
 }*/
 
-module.exports = { getCours,postCours }
+module.exports = { getCours,postCours,getCoursesSearch }

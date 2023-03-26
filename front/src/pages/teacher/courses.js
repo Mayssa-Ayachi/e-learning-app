@@ -2,39 +2,51 @@ import { useEffect, useState } from "react"
 import { useAuthContext } from "../../hooks/useAuthContext"
 
 
+
+
 // components
 import CoursDetails from "../../components/coursDetails"
 import AjoutCours from "../../components/ajouterCours";
-
+import CoursSearch from "../../components/CoursSearch";
+const courssearch=require('../../components/CoursSearch')
   const TeacherCourses = () => {
   const [cours, setCours] = useState(null)
+  const [query, setQuery] = useState("");
+
   const {user} = useAuthContext()
 
 
-  useEffect(() => {
-    
-    const fetchCours = async () => {
-      const response = await fetch('/api/courses/allcourses', {
+  const getCoursesSearch = async () => {
+    const fetchCourss = async () => {
+      try{
+      const response = await fetch(`/api/courses/list/?q=${query}`, {
         headers: {'Authorization': `Bearer ${user.token}`,
         'Role':`${user.role}`}
       })
       const json = await response.json()
-
-      if (response.ok) {
         setCours(json)
+      }catch(err){
+        console.error(err.message)
       }
     }
 
     if (user) {
-      fetchCours()
+      fetchCourss()
     }
-  }, [user])
+  };
 
+
+
+  useEffect(() => {
+    getCoursesSearch();
+  }, [user, query])
 
   return (
     <>
     <div className="home">
+      <div className="rechercheajout">
     <AjoutCours />
+    <CoursSearch setQuery={(e) => setQuery(e)} /></div>
       <div className="coursactivites">
 
         {cours && cours.map(cours => (

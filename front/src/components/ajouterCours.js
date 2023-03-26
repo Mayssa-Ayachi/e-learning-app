@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { GoPlus } from "react-icons/go";
 import { useAuthContext } from "../hooks/useAuthContext"
 import UploadWidget from "./uploadwidget";
 
@@ -56,23 +57,29 @@ import UploadWidget from "./uploadwidget";
 
     return (
       <Fragment>
-        <button onClick={handleShow} >Add Course</button>
-        
+        <button onClick={handleShow} className="activity-button" variant="outline-secondary"><GoPlus color="#BBA14A" fontSize="1.5em" /></button>
+
         <Modal show={show} onHide={handleClose} onExit={reload} backdrop="static">
           <Modal.Header closeButton>
+            <div className="centre">
             <Modal.Title>Add Course</Modal.Title>
+            </div>
           </Modal.Header>
 
 
           <Modal.Body> 
+          
           <div className="row">
-          <div className="input-group mb-3">
-          <span className="input-group-text ">Title :</span>
+          <div class="input-group mb-3">
+          <div class="input-group-prepend ">
+            <span class="input-group-text" id="inputGroup-sizing-default">Title :</span>
+          </div>
 
           <input
             type="text"
-            className="form-control"
+            class="form-control"
             placeholder="Title"
+            aria-describedby="inputGroup-sizing-default"
             onChange={e => setTitle(e.target.value)}
           />
         </div>
@@ -80,12 +87,15 @@ import UploadWidget from "./uploadwidget";
         
         <div className="row">
         <div className="input-group mb-3">
-        <span className="input-group-text ">Category :</span>
+        <div className="input-group-prepend ">
+            <span className="input-group-text" id="inputGroup-sizing-default">Category :</span>
+          </div>
 
-                <input
+            <input
             type="text"
             className="form-control"
             placeholder="Category"
+            aria-describedby="inputGroup-sizing-default"
             onChange={e => setCategorie(e.target.value)}
           />
         </div>
@@ -93,30 +103,34 @@ import UploadWidget from "./uploadwidget";
           
         <div className="row">
         <div className="input-group mb-3">
-        <span className="input-group-text ">Description :</span>
+        <div className="input-group-prepend ">
+            <span className="input-group-text" id="inputGroup-sizing-default">Description :</span>
+          </div>
 
                 <input
             type="text"
             className="form-control"
             placeholder="Description"
+            aria-describedby="inputGroup-sizing-default"
             onChange={e => setBody(e.target.value)}
           />
         </div>
         </div>    
 
-
+        <div className="upload">
         <UploadWidget changeURL={url=>setUrl(url)}/>
-          
+        </div>
         </Modal.Body>
 
 
   <Modal.Footer>
-  <Button variant="dark" data-bs-dismiss="modal"  onClick={handleClose}>Cancel</Button>
-  <Button variant="light" id="valider"  
-  onClick={addCourse}>Submit</Button>
-  {(valide && <div className="valide">Activity uploaded</div>) || (error && <div className="error">{error}</div>)}
 
+  <Button variant="outline-secondary"className="activity-button" id="valider"  
+  onClick={addCourse}>Submit</Button>
+  <Button variant="dark" data-bs-dismiss="modal"  onClick={handleClose}>Cancel</Button>
   </Modal.Footer>
+  {(valide && <div className="valide"><center>Course uploaded</center></div>) || (error && <div className="error"><center>{error}</center></div>)}
+  
   </Modal>
   
       </Fragment>
