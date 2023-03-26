@@ -6,15 +6,15 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { useAuthContext } from "../hooks/useAuthContext";
 
-const TeacherProfilePagee = () => {
+const TeacherProfilePagee = ({ tea }) => {
  
   const [teacher, setTeacher] = useState({});
   const [show, setShow] = useState(false);
-  const [name, setName] = useState("");
-  const [phonenumber, setPhonenumber] = useState("");
-  const [linkedin, setLinkedin] = useState("");
-  const [university, setUniversity] = useState("");
-  const [field, setField] = useState("");
+  const [name, setName] = useState(tea.name);
+  const [phonenumber, setPhonenumber] = useState(tea.phonenumber);
+  const [linkedin, setLinkedin] = useState(tea.linkedin);
+  const [university, setUniversity] = useState(tea.university);
+  const [field, setField] = useState(tea.field);
   const { user } = useAuthContext();
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const TeacherProfilePagee = () => {
       .catch((err) => {
         console.log(err);
       });
-  },);
+  },[]);
 
   
 
@@ -111,9 +111,9 @@ const TeacherProfilePagee = () => {
   <Form.Label>Name</Form.Label>
   <Form.Control
     type="text"
-    placeholder={teacher.name}
-    
-    onChange={(e) => setName(e.target.value)}
+    placeholder="Name"
+    defaultValue={name}
+    onChange={(e) => setName(e.target.value||"None")}
     style={{ borderRadius: "5px", border: "none", boxShadow: "none" }}
   />
 </Form.Group>
@@ -122,9 +122,9 @@ const TeacherProfilePagee = () => {
   <Form.Label>Phone number</Form.Label>
   <Form.Control
     type="text"
-    placeholder={teacher.phonenumber}
-    value={phonenumber}
-    onChange={(e) => setPhonenumber(e.target.value)}
+    placeholder="Phone number"
+    defaultValue={phonenumber}
+    onChange={(e) => setPhonenumber(e.target.value||"None")}
     style={{ borderRadius: "5px", border: "none", boxShadow: "none" }}
   />
 </Form.Group>
@@ -133,9 +133,9 @@ const TeacherProfilePagee = () => {
   <Form.Label>Linkedin</Form.Label>
   <Form.Control
     type="text"
-    placeholder={teacher.linkedin}
+    placeholder="LinkedIn"
     defaultValue={linkedin}
-    onChange={(e) => setLinkedin(e.target.value)}
+    onChange={(e) => setLinkedin(e.target.value||"None")}
     style={{ borderRadius: "5px", border: "none", boxShadow: "none" }}
   />
 </Form.Group>
@@ -144,9 +144,9 @@ const TeacherProfilePagee = () => {
   <Form.Label>University</Form.Label>
   <Form.Control
     type="text"
-    placeholder={teacher.university}
-    value={university}
-    onChange={(e) => setUniversity(e.target.value)}
+    placeholder="University"
+    defaultValue={university}
+    onChange={(e) => setUniversity(e.target.value||"None")}
     style={{ borderRadius: "5px", border: "none", boxShadow: "none" }}
   />
 </Form.Group>
@@ -155,9 +155,9 @@ const TeacherProfilePagee = () => {
   <Form.Label>Field</Form.Label>
   <Form.Control
     type="text"
-    placeholder={teacher.field}
-    value={field}
-    onChange={(e) => setField(e.target.value)}
+    placeholder="Field"
+    defaultValue={field}
+    onChange={(e) => setField(e.target.value||"None")}
     style={{ borderRadius: "5px", border: "none", boxShadow: "none" }}
   />
 </Form.Group>

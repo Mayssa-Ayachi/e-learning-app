@@ -9,6 +9,7 @@ import Signup from './pages/signup/signup'
 import Navbaar from './components/navbar'
 import TeacherActivities from './pages/teacher/activities'
 import TeacherProfilePage from './components/profile'
+import ActivityViewer from './pages/teacher/viewActivity'
 
 function App() {
   
@@ -39,7 +40,7 @@ function App() {
 
           <Route 
             path="/teacherProfile"
-            element={<TeacherProfilePage/>}
+            element={<TeacherProfilePage tea={user}/>}
           />
 
           <Route 
