@@ -20,15 +20,13 @@ const getCours = async (req,res) =>{
 const getCoursesSearch = async (req, res) => {
     const postedBy=req.user
     if (!mongoose.Types.ObjectId.isValid(postedBy)) {
-        return res.status(404).json({error: 'No such Course'})
+        return res.status(404).json({error: 'No such user'})
       }
 
     try {
       const { q } = req.query;
       const keys = ["title","categorie","body"];
       const allcourses= await Cours.find({postedBy:postedBy}).sort({createdAt: -1})
-      const rows = allcourses.rows;
-
       const search = (data) => {
         return data.filter((item) =>
           keys.some((key) => item[key].toString().toLowerCase().includes(q))

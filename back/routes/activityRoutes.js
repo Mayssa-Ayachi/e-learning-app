@@ -6,7 +6,8 @@ const {
   getActivities, 
   postActivity,
   deleteActivity,
-  getCourseActivities
+  getCourseActivities,
+  getCourseActivitiesSearch
 } = require('../controllers/activityController')
 
 
@@ -21,6 +22,8 @@ router.post('/create', postActivity)
 
 // GET course activities
 router.get('/courseactivities/:course', getCourseActivities)
+
+router.get('/courseactivities/list/:course', getCourseActivitiesSearch)
 
 // DELETE a Activity
 router.delete('/:id', deleteActivity)

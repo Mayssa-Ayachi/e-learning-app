@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react"
 import { useAuthContext } from "../../hooks/useAuthContext"
 
-import { ImSearch } from "react-icons/im";
 
 
 // components
 import CoursDetails from "../../components/coursDetails"
 import AjoutCours from "../../components/ajouterCours";
 import CoursSearch from "../../components/CoursSearch";
-const courssearch=require('../../components/CoursSearch')
   const TeacherCourses = () => {
   const [cours, setCours] = useState(null)
   const [query, setQuery] = useState("");

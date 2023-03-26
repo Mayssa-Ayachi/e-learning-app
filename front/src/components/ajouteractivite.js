@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useAuthContext } from "../hooks/useAuthContext"
 import { useActivityContext } from "../hooks/useActivityContext"
 import UploadWidget from "./uploadwidget";
+import { GoPlus } from "react-icons/go";
 
 const AjoutActivite = () => {
     const [title,setTitle] = useState("")
@@ -61,12 +62,12 @@ const AjoutActivite = () => {
 
     return (
         <Fragment>
-        <Button onClick={handleShow} className="activity-button" variant="outline-secondary">Add an activity</Button>
+        <button onClick={handleShow} className="activity-button" variant="outline-secondary"><GoPlus color="#BBA14A" fontSize="1.5em" /></button>
         
         <Modal show={show} onHide={handleClose} onExit={reload} backdrop="static">
             <Modal.Header closeButton >
             <div className="centre">
-            <Modal.Title>Add an activity</Modal.Title>
+            <Modal.Title>Add Activity</Modal.Title>
             </div>
             </Modal.Header>
 
