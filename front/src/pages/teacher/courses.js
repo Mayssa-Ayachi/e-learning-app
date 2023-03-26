@@ -3,6 +3,7 @@ import { useAuthContext } from "../../hooks/useAuthContext"
 
 
 
+
 // components
 import CoursDetails from "../../components/coursDetails"
 import AjoutCours from "../../components/ajouterCours";
@@ -15,6 +16,7 @@ import CoursSearch from "../../components/CoursSearch";
 
 
   const getCoursesSearch = async () => {
+    
     const fetchCourss = async () => {
       try{
       const response = await fetch(`/api/courses/list/?q=${query}`, {

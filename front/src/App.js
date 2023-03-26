@@ -8,10 +8,8 @@ import Login from './pages/login/login'
 import Signup from './pages/signup/signup'
 import Navbaar from './components/navbar'
 import TeacherActivities from './pages/teacher/activities'
-import TeacherProfilePagee from './components/profile'
-import StudentProfile from './components/profileStudent'
+import TeacherProfilePage from './components/profile'
 import ActivityViewer from './pages/teacher/viewActivity'
-
 
 function App() {
   
@@ -42,7 +40,7 @@ function App() {
 
           <Route 
             path="/teacherProfile"
-            element={role==="teacher"? <TeacherProfilePagee/> : <Navigate to="/Login" />}
+            element={<TeacherProfilePage tea={user}/>}
           />
 
           <Route 

@@ -15,7 +15,7 @@ router.use(requireAuth)
 // GET  profil
 router.get('/profile', getprofile)
 
-// Post activity
+// Update profil
 router.put('/create', updateProfile)
 
 // GET a single Student
