@@ -54,12 +54,12 @@ const getCourseActivitiesSearch = async (req, res) => {
     
 // create Activity
 const postActivity = async (req, res) => {
-    const {title,body,activ,coursID} = req.body 
+    const {title,body,activ,coursID,type} = req.body 
 
     try {
         req.user.password = undefined
 
-        const activityy = await activity.create({title,body,activ,coursID})
+        const activityy = await activity.create({title,body,activ,coursID,type})
         res.status(200).json(activityy)
     }catch(error){
         res.status(400).json({error: error.message})

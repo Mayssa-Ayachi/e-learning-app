@@ -1,12 +1,10 @@
-import { useEffect,useRef } from 'react';
+import { useRef } from 'react';
 import Button from 'react-bootstrap/esm/Button';
 
 const UploadWidget = (props) => {
     const cloudinaryRef = useRef();
     const widgetRef = useRef();
 
-  useEffect(() => {
-    // Store the Cloudinary window instance to a ref when the page renders
     cloudinaryRef.current = window.cloudinary;
 
     widgetRef.current = cloudinaryRef.current.createUploadWidget({
@@ -16,11 +14,9 @@ const UploadWidget = (props) => {
         if ( error || result.event === 'success' ) {
           console.log(result);
           props.changeURL(result.info.url);
+          props.changeType(result.info.format);
         }
       })
-  })
-
- 
 
   return (
     <Button variant="outline-dark" onClick={()=>widgetRef.current.open()}>
