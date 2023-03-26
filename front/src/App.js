@@ -9,6 +9,7 @@ import Signup from './pages/signup/signup'
 import Navbaar from './components/navbar'
 import TeacherActivities from './pages/teacher/activities'
 import TeacherProfilePagee from './components/profile'
+import StudentProfile from './components/profileStudent'
 import ActivityViewer from './pages/teacher/viewActivity'
 
 
@@ -31,17 +32,22 @@ function App() {
           <Route 
             path="/login" 
             element={!user ? <Login /> : role==="teacher"? <Navigate to="/teacherProfile"/>
-            : role==="student" ? <Navigate to="/student"/> : <Navigate to="/admin"/> }
+            : role==="student" ? <Navigate to="/studentProfile"/> : <Navigate to="/admin"/> }
           />
           <Route 
             path="/signup" 
             element={!user ? <Signup /> : role==="teacher"? <Navigate to="/teacherProfile"/>
-            : role==="student" ? <Navigate to="/student"/> : <Navigate to="/admin"/> }
+            : role==="student" ? <Navigate to="/studentProfile"/> : <Navigate to="/admin"/> }
           />
 
           <Route 
             path="/teacherProfile"
             element={role==="teacher"? <TeacherProfilePagee/> : <Navigate to="/Login" />}
+          />
+
+          <Route 
+            path="/studentProfile"
+            element={role==="student"? <StudentProfile/> : <Navigate to="/Login" />}
           />
 
           <Route 
@@ -63,10 +69,7 @@ function App() {
             path="/admin"
             element={role==="admin"? <Admin/> : <Navigate to="/Login" />}
           />
-          <Route 
-            path="/student"
-            element={role==="student"? <Student/> : <Navigate to="/Login" />}
-          />
+          
         </Routes>
       </div>
     </BrowserRouter>
