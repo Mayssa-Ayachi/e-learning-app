@@ -27,8 +27,6 @@ const getCoursesSearch = async (req, res) => {
       const { q } = req.query;
       const keys = ["title","categorie","body"];
       const allcourses= await Cours.find({postedBy:postedBy}).sort({createdAt: -1})
-      const rows = allcourses.rows;
-
       const search = (data) => {
         return data.filter((item) =>
           keys.some((key) => item[key].toString().toLowerCase().includes(q))

@@ -4,7 +4,8 @@ const router = express.Router()
 
 const {
   getCours, 
-  postCours,getCoursesSearch
+  postCours,
+  getCoursesSearch
 } = require('../controllers/coursController')
 
 

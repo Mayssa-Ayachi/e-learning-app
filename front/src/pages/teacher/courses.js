@@ -8,7 +8,6 @@ import { useAuthContext } from "../../hooks/useAuthContext"
 import CoursDetails from "../../components/coursDetails"
 import AjoutCours from "../../components/ajouterCours";
 import CoursSearch from "../../components/CoursSearch";
-const courssearch=require('../../components/CoursSearch')
   const TeacherCourses = () => {
   const [cours, setCours] = useState(null)
   const [query, setQuery] = useState("");
@@ -17,6 +16,7 @@ const courssearch=require('../../components/CoursSearch')
 
 
   const getCoursesSearch = async () => {
+    
     const fetchCourss = async () => {
       try{
       const response = await fetch(`/api/courses/list/?q=${query}`, {
