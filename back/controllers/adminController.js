@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 // get all Users
 const getUsers = async (req, res) => {
   // role of the required users
-  const userRole = req.body.userRole
+  const {userRole} = req.params
 
   if (userRole == "student"){
     users = await Student.find({}).sort({createdAt: -1})
@@ -34,21 +34,21 @@ const getStudent = async (req, res) => {
   res.status(200).json(student)
 }
 
-// delete a Student
-const deleteStudent = async (req, res) => {
-    const { id } = req.params
+// delete a User
+const deleteUser = async (req, res) => {
+    const { id,userRole } = req.body
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({error: 'No such student'})
+      return res.status(400).json({error: 'No such user'})
     }
   
-    const student = await Student.findOneAndDelete({_id: id})
-  
-    if(!student) {
-      return res.status(400).json({error: 'No such student'})
+    if (userRole == "student"){
+      user = await Student.findOneAndDelete({_id: id})
+    }else if (userRole == "teacher"){
+      user = await Teacher.findOneAndDelete({_id: id})
     }
   
-    res.status(200).json(student)
+    res.status(200).json(user)
 }
 
 // update a Student
@@ -73,6 +73,6 @@ const updateStudent = async (req, res) => {
 module.exports = {
   getUsers,
   getStudent,
-  deleteStudent,
+  deleteUser,
   updateStudent,
 }

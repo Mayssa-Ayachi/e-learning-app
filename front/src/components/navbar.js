@@ -31,6 +31,19 @@ const Navbaar = () => {
             </>
            
           )}
+          {user && role==="admin" && (
+            <>
+              <Nav className="justify-content-center">
+              <Nav.Link href="/teachersList">Teachers</Nav.Link>
+              <Nav.Link href="/studentsList">Students</Nav.Link>
+            </Nav>
+            <Nav className="justify-content-end  d-flex align-items-center">
+              <span className="mx-2">{user.email}</span>
+              <Button variant="outline-dark" onClick={handleClick}>Logout</Button>
+              </Nav>
+            </>
+           
+          )}
            
           {!user && (
             <Nav className="justify-content-end">

@@ -2,7 +2,7 @@ const express = require('express')
 const {
   getUsers, 
   getStudent, 
-  deleteStudent, 
+  deleteUser, 
   updateStudent,
 } = require('../controllers/adminController')
 const requireAuth = require('../middleware/requireAuth')
@@ -13,13 +13,13 @@ const router = express.Router()
 router.use(requireAuth)
 
 // GET all Students
-router.get('/', getUsers)
+router.get('/:userRole', getUsers)
 
 // GET a single Student
 router.get('/:id', getStudent)
 
 // DELETE a Student
-router.delete('/:id', deleteStudent)
+router.delete('/deleteuser', deleteUser)
 
 // UPDATE a Student
 router.patch('/:id', updateStudent)
