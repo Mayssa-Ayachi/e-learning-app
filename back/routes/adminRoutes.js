@@ -3,6 +3,7 @@ const {
   getUsers, 
   getStudent, 
   deleteUser, 
+  deleteStudent,
   updateStudent,
 } = require('../controllers/adminController')
 const requireAuth = require('../middleware/requireAuth')
@@ -18,8 +19,11 @@ router.get('/:userRole', getUsers)
 // GET a single Student
 router.get('/:id', getStudent)
 
+// DELETE a Teacher
+router.delete('/deleteuser/:id', deleteUser)
+
 // DELETE a Student
-router.delete('/deleteuser', deleteUser)
+router.delete('/deletestudent/:id', deleteStudent)
 
 // UPDATE a Student
 router.patch('/:id', updateStudent)

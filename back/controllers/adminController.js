@@ -36,19 +36,28 @@ const getStudent = async (req, res) => {
 
 // delete a User
 const deleteUser = async (req, res) => {
-    const { id,userRole } = req.body
+    const { id } = req.params
+    console.log("back")
+    console.log(id)
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({error: 'No such user'})
     }
-  
-    if (userRole == "student"){
-      user = await Student.findOneAndDelete({_id: id})
-    }else if (userRole == "teacher"){
-      user = await Teacher.findOneAndDelete({_id: id})
-    }
-  
+    user = await Teacher.findOneAndDelete({_id: id})
     res.status(200).json(user)
+}
+
+// delete a Student
+const deleteStudent = async (req, res) => {
+  const { id } = req.params
+  console.log("back")
+  console.log(id)
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({error: 'No such user'})
+  }
+  user = await Student.findOneAndDelete({_id: id})
+  res.status(200).json(user)
 }
 
 // update a Student
@@ -74,5 +83,6 @@ module.exports = {
   getUsers,
   getStudent,
   deleteUser,
+  deleteStudent,
   updateStudent,
 }

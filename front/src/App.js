@@ -8,7 +8,7 @@ import Signup from './pages/signup/signup'
 import Navbaar from './components/navbar'
 import TeacherActivities from './pages/teacher/activities'
 import TeacherProfilePagee from './components/profile'
-import StudentsList from './components/studentList'
+import StudentsList from './pages/admin/studentList'
 import TeachersList from './pages/admin/teachersList'
 import ActivityViewer from './pages/teacher/viewActivity'
 
