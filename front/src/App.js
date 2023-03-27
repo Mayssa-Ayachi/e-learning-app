@@ -41,37 +41,37 @@ function App() {
           
           <Route 
             path="/teacherProfile"
-            element={role==="teacher"? <TeacherProfilePagee/> : <Navigate to="/Login" />}
+            element={!user ? <Login /> : role==="teacher"? <TeacherProfilePagee/> : <Navigate to="/Login" />}
           />
           <Route 
             path="/teacherActivities"
             /*element={ <TeacherActivities/> }*/
-            element={role==="teacher"? <TeacherActivities/> : <Navigate to="/Login" />}
+            element={!user ? <Login /> : role==="teacher"? <TeacherActivities/> : <Navigate to="/Login" />}
            />
           <Route 
             path="/teacherCourses"
             /*element={ <TeacherCourses/> }*/
-            element={role==="teacher"? <TeacherCourses/> : <Navigate to="/Login" />}
+            element={!user ? <Login /> : role==="teacher"? <TeacherCourses/> : <Navigate to="/Login" />}
           />
 <         Route 
             path="/viewActivity"
             /*element={ <ActivityViewer/> }*/
-            element={role==="teacher"? <ActivityViewer/> : <Navigate to="/Login" />}
+            element={!user ? <Login /> : role==="teacher"? <ActivityViewer/> : <Navigate to="/Login" />}
           />
 
 
           <Route 
             path="/teachersList"
-            element={role==="admin"? <TeachersList/> : <Navigate to="/Login" />}
+            element={!user ? <Login /> : role==="admin"? <TeachersList/> : <Navigate to="/Login" />}
           />
           <Route 
             path="/studentsList"
-            element={role==="admin"? <StudentsList/> : <Navigate to="/Login" />}
+            element={!user ? <Login /> : role==="admin"? <StudentsList/> : <Navigate to="/Login" />}
           />
 
           <Route 
             path="/student"
-            element={role==="student"? <Student/> : <Navigate to="/Login" />}
+            element={!user ? <Login /> : role==="student"? <Student/> : <Navigate to="/Login" />}
           />
         </Routes>
       </div>
