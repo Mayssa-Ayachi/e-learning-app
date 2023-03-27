@@ -4,6 +4,7 @@ import { useAuthContext } from './hooks/useAuthContext'
 import Admin from './pages/admin/admin'
 import TeacherCourses from './pages/teacher/courses'
 import StudentCourses from './pages/student/courses'
+import MyCourses from './pages/student/myCourses'
 import Login from './pages/login/login'
 import Signup from './pages/signup/signup'
 import Navbaar from './components/navbar'
@@ -42,32 +43,36 @@ function App() {
           <Route 
             path="/teacherProfile"
             element={<TeacherProfilePage tea={user}/>}
+            
           />
 
           <Route 
             path="/studentProfile"
-            element={role==="student"? <StudentProfile stu={user}/> : <Navigate to="/Login" />}
+            element={<StudentProfile stu={user}/> }
           />
 
           <Route 
             path="/courseActivities"
-            element={ <TeacherActivities/> }
+            element={<TeacherActivities/> }
            />
 
           <Route 
             path="/teacherCourses"
-            element={ <TeacherCourses/> }
-            /*element={role==="teacher"? <TeacherCourses/> : <Navigate to="/Login" />}*/
+            element={<TeacherCourses/>}
           />
-
           <Route 
             path="/allCourses"
-            element={ <StudentCourses/> }
-            /*element={role==="teacher"? <TeacherCourses/> : <Navigate to="/Login" />}*/
+            element={<StudentCourses/>}
           />
 
 
-<         Route 
+          <Route 
+            path="/studentCourses"
+            element={<MyCourses/> }
+          />
+
+
+          <Route 
             path="/viewActivity"
             element={ <ActivityViewer/> }
             /*element={role==="teacher"? <TeacherCourses/> : <Navigate to="/Login" />}*/

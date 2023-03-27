@@ -6,7 +6,7 @@ const {
   getCours, 
   postCours,
   getCoursesSearch,
-  getCoursesStudent
+  getCoursesStudent,myCourses
 } = require('../controllers/coursController')
 
 
@@ -17,7 +17,7 @@ router.use(requireAuth)
 router.get('/allcourses', getCours)
 router.get('/list', getCoursesSearch)
 router.get('/listStudent', getCoursesStudent)
-
+router.get('/mycourses', myCourses)
 
 // Post activity
 router.post('/create', postCours)

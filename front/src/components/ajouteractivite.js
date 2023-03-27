@@ -44,8 +44,7 @@ const AjoutActivite = () => {
             }).then(res=>res.json())
             .then(()=>{
                 setValide("true")
-                setTimeout(()=>{setValide("")}
-                , 2000)
+                setTimeout(()=>{setValide("")}, 2000)
                 
             })
             .catch(err=>{
