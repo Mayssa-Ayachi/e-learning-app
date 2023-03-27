@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useAuthContext } from './hooks/useAuthContext'
 // pages & components
-import Student from './pages/student/student'
 import TeacherCourses from './pages/teacher/courses'
 import StudentCourses from './pages/student/courses'
 import MyCourses from './pages/student/myCourses'
@@ -45,7 +44,7 @@ function App() {
           
           <Route
             path="/studentProfile"
-            element={<StudentProfile stu={user}/> }
+            element={!user ? <Login /> : role==="student"? <StudentProfile stu={user}/> : <Navigate to="/Login" />}
           />
 
           <Route 
@@ -55,12 +54,12 @@ function App() {
 
           <Route 
             path="/allCourses"
-            element={<StudentCourses/>}
+            element={!user ? <Login /> : role==="student"? <StudentCourses/> : <Navigate to="/Login" />}
           />
 
           <Route 
             path="/studentCourses"
-            element={<MyCourses/> }
+            element={!user ? <Login /> : role==="student"? <MyCourses/> : <Navigate to="/Login" />}
           />
 
           <Route 
@@ -70,7 +69,6 @@ function App() {
 
           <Route 
             path="/teacherCourses"
-            /*element={ <TeacherCourses/> }*/
             element={!user ? <Login /> : role==="teacher"? <TeacherCourses/> : <Navigate to="/Login" />}
           />
 
@@ -84,13 +82,7 @@ function App() {
           />
 
           <Route 
-            path="/student"
-            element={!user ? <Login /> : role==="student"? <Student/> : <Navigate to="/Login" />}
-          />
-
-          <Route 
             path="/viewActivity"
-            /*element={ <ActivityViewer/> }*/
             element={!user ? <Login /> : role==="teacher"? <ActivityViewer/> : <Navigate to="/Login" />}
           />
         </Routes>
