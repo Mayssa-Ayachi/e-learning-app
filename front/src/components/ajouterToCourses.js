@@ -1,9 +1,6 @@
 import React, { Fragment, useState  } from "react";
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
 import { useAuthContext } from "../hooks/useAuthContext"
 import { useActivityContext } from "../hooks/useActivityContext"
-import UploadWidget from "./uploadwidget";
 import { GoPlus } from "react-icons/go";
 
 const AjoutCours = () => {
@@ -15,14 +12,13 @@ const AjoutCours = () => {
     
      const AddToMyCourse = async () => {
         try {
-          const response = await fetch(`/api/student/addCourse/${coursID}`, {
+          await fetch(`/api/student/addCourse/${coursID}`, {
             method: 'PUT',
             headers: {
               'Authorization': `Bearer ${user.token}`,
               'Role': `${user.role}`
             }
           });
-          const data = await response.json();
           setValide("true")
           setTimeout(()=>{setValide("")}, 700)
 

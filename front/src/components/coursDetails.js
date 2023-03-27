@@ -1,8 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import { useActivityContext } from "../hooks/useActivityContext"
-import { useAuthContext } from "../hooks/useAuthContext"
-
 
 const CoursDetails = ({ cours }) => {
   const { dispatch } = useActivityContext()

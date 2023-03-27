@@ -4,7 +4,6 @@ import { useActivityContext } from "../../hooks/useActivityContext"
 import AjoutActivite from "../../components/ajouteractivite";
 import AjoutCours from "../../components/ajouterToCourses";
 import CoursSearch from "../../components/CoursSearch";
-import Button from 'react-bootstrap/Button';
 
 // components
 import ActivityDetails from "../../components/activitiesDetails"
