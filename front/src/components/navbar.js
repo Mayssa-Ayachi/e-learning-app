@@ -31,18 +31,32 @@ const Navbaar = () => {
             </>
            
           )}
+          
           {user && role==="admin" && (
             <>
               <Nav className="justify-content-center">
               <Nav.Link href="/teachersList">Teachers</Nav.Link>
               <Nav.Link href="/studentsList">Students</Nav.Link>
+              </Nav>
+            <Nav className="justify-content-end  d-flex align-items-center">
+              <span className="mx-2">{user.email}</span>
+              <Button variant="outline-dark" onClick={handleClick}>Logout</Button>
+              </Nav>
+            </>)
+          }
+
+          {user && role==="student" && (
+            <>
+              <Nav className="justify-content-center">
+              <Nav.Link href="/studentProfile">Profile</Nav.Link>
+              <Nav.Link href="/allCourses">AllCourses</Nav.Link>
+              <Nav.Link href="/studentCourses">MyCourses</Nav.Link>
             </Nav>
             <Nav className="justify-content-end  d-flex align-items-center">
               <span className="mx-2">{user.email}</span>
               <Button variant="outline-dark" onClick={handleClick}>Logout</Button>
               </Nav>
-            </>
-           
+              </>
           )}
            
           {!user && (
@@ -52,9 +66,7 @@ const Navbaar = () => {
            
             </Nav>
           )}    
-          
-             
-           
+                
         </Container>
       </Navbar>
   )

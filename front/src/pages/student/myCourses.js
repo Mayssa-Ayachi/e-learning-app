@@ -1,23 +1,27 @@
 import { useEffect, useState } from "react"
 import { useAuthContext } from "../../hooks/useAuthContext"
 
+
 // components
 import CoursDetails from "../../components/coursDetails"
-import AjoutCours from "../../components/ajouterCours";
-import CoursSearch from "../../components/CoursSearch";
+import CoursSearch from "../../components/CoursSearch"
 
-  const TeacherCourses = () => {
+  const MyCourses = () => {
+
   const [cours, setCours] = useState(null)
   const [query, setQuery] = useState("");
 
   const {user} = useAuthContext()
 
 
-  const getCoursesSearch = async () => {
+  const getMyCourses = async () => {
     
     const fetchCourss = async () => {
+        console.log("pssssst")
+        console.log(user)
+
       try{
-      const response = await fetch(`/api/courses/list/?q=${query}`, {
+      const response = await fetch(`/api/courses/mycourses/?q=${query}`, {
         headers: {'Authorization': `Bearer ${user.token}`,
         'Role':`${user.role}`}
       })
@@ -36,15 +40,14 @@ import CoursSearch from "../../components/CoursSearch";
 
 
   useEffect(() => {
-    getCoursesSearch();
+    getMyCourses();
   }, [user, query])
 
   return (
     <>
     <div className="home">
       <div className="rechercheajout">
-    <AjoutCours />
-    <CoursSearch setQuery={(e) => setQuery(e)} /></div>
+        <CoursSearch setQuery={(e) => setQuery(e)} /></div>
       <div className="coursactivites">
 
         {cours && cours.map(cours => (
@@ -56,4 +59,4 @@ import CoursSearch from "../../components/CoursSearch";
   )
 }
 
-export default TeacherCourses
+export default MyCourses

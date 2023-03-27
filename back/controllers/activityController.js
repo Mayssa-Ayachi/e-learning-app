@@ -17,7 +17,7 @@ const getCourseActivities = async (req,res) =>{
 
     if (!mongoose.Types.ObjectId.isValid(course)) {
         return res.status(404).json({error: 'No such Course'})
-      }
+    }
 
     try{
         const Activities = await activity.find({coursID:course}).sort({createdAt: -1})
@@ -26,6 +26,31 @@ const getCourseActivities = async (req,res) =>{
         res.status(400).json({error: error.message})
     }    
 }
+
+const getCourseActivitiesSearch = async (req, res) => {
+    const { course } = req.params
+    if (!mongoose.Types.ObjectId.isValid(course)) {
+        console.log("noooooon")
+        return res.status(404).json({error: 'No such Course'})
+      }
+
+    try {
+      const { q } = req.query;
+      const keys = ["title","body"];
+      const activities= await activity.find({coursID:course}).sort({createdAt: -1})
+      const search = (data) => {
+        return data.filter((item) =>
+          keys.some((key) => item[key].toString().toLowerCase().includes(q))
+        );
+      };
+
+      q ? res.json(search(activities)) : res.json(activities);
+      console.log(res.json)
+      console.log("khedmeeeeeet")
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
     
 // create Activity
 const postActivity = async (req, res) => {
@@ -59,4 +84,4 @@ const deleteActivity = async (req, res) => {
     res.status(200).json(Activity)
 }
 
-module.exports = { getActivities,postActivity,deleteActivity,getCourseActivities }
+module.exports = { getActivities,postActivity,deleteActivity,getCourseActivities,getCourseActivitiesSearch }

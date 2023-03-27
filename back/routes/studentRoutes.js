@@ -3,8 +3,8 @@ const requireAuth = require('../middleware/requireAuth')
 const router = express.Router()
 
 const {
-   getprofile, updateProfile
-} = require('../controllers/teacherController')
+   getprofile, updateProfile,updateMyCourses
+} = require('../controllers/studentController')
    
 
 
@@ -14,16 +14,9 @@ router.use(requireAuth)
 // GET  profil
 router.get('/profile', getprofile)
 
-// Update profil
 router.put('/create', updateProfile)
+router.put('/addCourse/:course', updateMyCourses)
 
-// GET a single Student
-//router.get('/:id', getStudent)
 
-// DELETE a Student
-//router.delete('/:id', deleteStudent)
-
-// UPDATE a Student
-//router.patch('/:id', updateStudent)
 
 module.exports = router

@@ -9,8 +9,7 @@ const ActivityDetails = ({ activity}) => {
         <p><strong>Description : </strong>{activity.body}</p>
         <Link to="/viewActivity" state={{type:activity.type, url:activity.activ}}>
         <Button className="activity-button" 
-        variant="outline-secondary" 
-        >View activities</Button>{' '}</Link>
+        variant="outline-secondary" >View activity</Button>{' '}</Link>
       </div>
     )
   }

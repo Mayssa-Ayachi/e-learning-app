@@ -6,19 +6,19 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { useAuthContext } from "../hooks/useAuthContext";
 
-const TeacherProfilePagee = ({ tea }) => {
+const StudentProfile = ({ stu }) => {
  
-  const [teacher, setTeacher] = useState({});
+  const [student, setStudent] = useState({});
   const [show, setShow] = useState(false);
-  const [name, setName] = useState(tea.name);
-  const [phonenumber, setPhonenumber] = useState(tea.phonenumber);
-  const [linkedin, setLinkedin] = useState(tea.linkedin);
-  const [university, setUniversity] = useState(tea.university);
-  const [field, setField] = useState(tea.field);
+  const [name, setName] = useState(stu.name);
+  const [phonenumber, setPhonenumber] = useState(stu.phonenumber);
+  const [linkedin, setLinkedin] = useState(stu.linkedin);
+  const [university, setUniversity] = useState(stu.university);
+  const [field, setField] = useState(stu.field);
   const { user } = useAuthContext();
 
   useEffect(() => {
-    fetch('/api/teacher/profile', {
+    fetch('/api/student/profile', {
       method: "get",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +28,7 @@ const TeacherProfilePagee = ({ tea }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setTeacher(data);
+        setStudent(data);
         setLinkedin(data.linkedin);
         setField(data.field);
         setName(data.name);
@@ -44,8 +44,9 @@ const TeacherProfilePagee = ({ tea }) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   const handleUpdate = () => {
-    fetch(`/api/teacher/create`, {
+    fetch(`/api/student/create`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -63,7 +64,7 @@ const TeacherProfilePagee = ({ tea }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setTeacher(data);
+        setStudent(data);
         handleClose();
       })
       .catch((err) => {
@@ -76,20 +77,20 @@ const TeacherProfilePagee = ({ tea }) => {
     <Fragment>
       <Card className="mb-3 mt-3" style={{ padding: "20px" }}>
         <Card.Body>
-          <Card.Title>{teacher.name}</Card.Title>
+          <Card.Title>{student.name}</Card.Title>
         </Card.Body>
         <ListGroup variant="flush">
           <ListGroup.Item>
-            <strong>Phone number:</strong> {teacher.phonenumber}
+            <strong>Phone number:</strong> {student.phonenumber}
           </ListGroup.Item>
           <ListGroup.Item>
-            <strong>Linkedin:</strong> {teacher.linkedin}
+            <strong>Linkedin:</strong> {student.linkedin}
           </ListGroup.Item>
           <ListGroup.Item>
-            <strong>University:</strong> {teacher.university}
+            <strong>University:</strong> {student.university}
           </ListGroup.Item>
           <ListGroup.Item>
-            <strong>Field:</strong> {teacher.field}
+            <strong>Field:</strong> {student.field}
           </ListGroup.Item>
         </ListGroup>
         <Card.Footer>
@@ -178,4 +179,4 @@ const TeacherProfilePagee = ({ tea }) => {
   );
 };
 
-export default TeacherProfilePagee;
+export default StudentProfile;

@@ -3,6 +3,7 @@ const Teacher =  require('../models/teacherModel')
 const getprofile = async (req,res) =>{
     try{
         const teacher = await Teacher.findById(req.user).select("-password");
+        
         res.status(200).json(teacher)
         console.log(teacher)
     }
@@ -28,9 +29,9 @@ const updateProfile = async (req, res) => {
       ).select("-password");
   
       if (!teacher) {
-        return res.status(404).json({ error: "User not found" });
+        return res.status(404).message({ error: "Teacher not found" });
       }
-  
+      
       res.status(200).json(teacher);
     } catch (error) {
       res.status(400).json({ error: error.message });

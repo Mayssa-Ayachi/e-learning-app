@@ -17,6 +17,8 @@ const requireAuth = async (req, res, next) => {
 
   try {
     const { _id } = jwt.verify(token, process.env.SECRET)
+    console.log(_id)
+    
 
     //req.user_role is the role of the current user
     //req.user is the id of the current user
