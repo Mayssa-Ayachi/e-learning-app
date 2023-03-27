@@ -29,9 +29,9 @@ const updateProfile = async (req, res) => {
       ).select("-password");
   
       if (!teacher) {
-        return res.status(404).json({ error: "User not found" });
+        return res.status(404).message({ error: "Teacher not found" });
       }
-  
+      
       res.status(200).json(teacher);
     } catch (error) {
       res.status(400).json({ error: error.message });

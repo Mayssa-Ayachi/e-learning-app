@@ -2,7 +2,9 @@ import { useEffect, useState } from "react"
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useActivityContext } from "../../hooks/useActivityContext"
 import AjoutActivite from "../../components/ajouteractivite";
+import AjoutCours from "../../components/ajouterToCourses";
 import CoursSearch from "../../components/CoursSearch";
+import Button from 'react-bootstrap/Button';
 
 // components
 import ActivityDetails from "../../components/activitiesDetails"
@@ -41,7 +43,10 @@ import ActivityDetails from "../../components/activitiesDetails"
   return (
     <div className="home">
       <div className="rechercheajout">
-      <AjoutActivite />
+      {user.role==="student" && <AjoutCours />}
+    
+      
+      {user.role==="teacher" && <AjoutActivite />}
       <CoursSearch setQuery={(e) => setQuery(e)} />
       </div>
       <div className="coursactivites">

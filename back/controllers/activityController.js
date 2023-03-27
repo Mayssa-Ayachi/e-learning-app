@@ -17,7 +17,7 @@ const getCourseActivities = async (req,res) =>{
 
     if (!mongoose.Types.ObjectId.isValid(course)) {
         return res.status(404).json({error: 'No such Course'})
-      }
+    }
 
     try{
         const Activities = await activity.find({coursID:course}).sort({createdAt: -1})

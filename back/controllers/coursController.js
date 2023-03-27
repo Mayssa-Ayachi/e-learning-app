@@ -19,9 +19,11 @@ const getCours = async (req,res) =>{
 
 const getCoursesSearch = async (req, res) => {
     const postedBy=req.user
-    if (!mongoose.Types.ObjectId.isValid(postedBy)) {
-        return res.status(404).json({error: 'No such user'})
-      }
+    console.log(postedBy)
+    console.log(req.headers.role)
+    if (!mongoose.Types.ObjectId.isValid(postedBy) || req.headers.role!="teacher") {
+        return res.status(404).json({error: 'No such teacher'})
+    }
 
     try {
       const { q } = req.query;
@@ -40,8 +42,43 @@ const getCoursesSearch = async (req, res) => {
       console.error(err.message);
     }
   };
+
+//Studenttttttttttttt
+//get all courses from all teacherss
+
+  const getCoursesStudent = async (req, res) => {
+    const postedBy=req.user
+    if ((!mongoose.Types.ObjectId.isValid(postedBy)) || (req.headers.role!="student")) {
+        return res.status(404).json({error: 'No such student'})
+    }
+
+    try {
+      const { q } = req.query;
+      const keys = ["title","categorie","body"];
+      const allcourses= await Cours.find().sort({createdAt: -1})
+      const search = (data) => {
+        return data.filter((item) =>
+          keys.some((key) => item[key].toString().toLowerCase().includes(q))
+        );
+      };
+
+      q ? res.json(search(allcourses)) : res.json(allcourses);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+
     
-// create Activity
+
+
+
+
+
+
+
+
+// create Course
 const postCours = async (req, res) => {
     const {title,categorie,body,url} = req.body 
     const postedBy=req.user
@@ -55,7 +92,6 @@ const postCours = async (req, res) => {
     }
 }
 
-// delete Activity
 
 /*const deleteActivity = async (req, res) => {
     const { id } = req.params
@@ -73,4 +109,4 @@ const postCours = async (req, res) => {
     res.status(200).json(Activity)
 }*/
 
-module.exports = { getCours,postCours,getCoursesSearch }
+module.exports = { getCours,postCours,getCoursesSearch,getCoursesStudent }

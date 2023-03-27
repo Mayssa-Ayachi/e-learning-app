@@ -2,13 +2,14 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useAuthContext } from './hooks/useAuthContext'
 // pages & components
 import Admin from './pages/admin/admin'
-import Student from './pages/student/student'
 import TeacherCourses from './pages/teacher/courses'
+import StudentCourses from './pages/student/courses'
 import Login from './pages/login/login'
 import Signup from './pages/signup/signup'
 import Navbaar from './components/navbar'
 import TeacherActivities from './pages/teacher/activities'
 import TeacherProfilePage from './components/profile'
+import StudentProfile from './components/profileStudent'
 import ActivityViewer from './pages/teacher/viewActivity'
 
 function App() {
@@ -45,11 +46,11 @@ function App() {
 
           <Route 
             path="/studentProfile"
-            element={role==="student"? <StudentProfile/> : <Navigate to="/Login" />}
+            element={role==="student"? <StudentProfile stu={user}/> : <Navigate to="/Login" />}
           />
 
           <Route 
-            path="/teacherActivities"
+            path="/courseActivities"
             element={ <TeacherActivities/> }
            />
 
@@ -58,6 +59,14 @@ function App() {
             element={ <TeacherCourses/> }
             /*element={role==="teacher"? <TeacherCourses/> : <Navigate to="/Login" />}*/
           />
+
+          <Route 
+            path="/allCourses"
+            element={ <StudentCourses/> }
+            /*element={role==="teacher"? <TeacherCourses/> : <Navigate to="/Login" />}*/
+          />
+
+
 <         Route 
             path="/viewActivity"
             element={ <ActivityViewer/> }
