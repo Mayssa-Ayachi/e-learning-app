@@ -48,11 +48,6 @@ function App() {
           />
 
           <Route 
-            path="/courseActivities"
-            element={!user ? <Login /> : role==="teacher"? <TeacherActivities/> : <Navigate to="/Login" />}
-           />
-
-          <Route 
             path="/allCourses"
             element={!user ? <Login /> : role==="student"? <StudentCourses/> : <Navigate to="/Login" />}
           />
@@ -73,6 +68,16 @@ function App() {
           />
 
           <Route 
+            path="/courseActivities"
+            element={!user ? <Login /> : (role==="teacher" || role==="student")? <TeacherActivities/> : <Navigate to="/Login" />}
+           />
+
+          <Route 
+            path="/viewActivity"
+            element={!user ? <Login /> : (role==="teacher" || role==="student")? <ActivityViewer/> : <Navigate to="/Login" />}
+          />
+
+          <Route 
             path="/teachersList"
             element={!user ? <Login /> : role==="admin"? <TeachersList/> : <Navigate to="/Login" />}
           />
@@ -81,10 +86,6 @@ function App() {
             element={!user ? <Login /> : role==="admin"? <StudentsList/> : <Navigate to="/Login" />}
           />
 
-          <Route 
-            path="/viewActivity"
-            element={!user ? <Login /> : role==="teacher"? <ActivityViewer/> : <Navigate to="/Login" />}
-          />
         </Routes>
       </div>
     </BrowserRouter>
