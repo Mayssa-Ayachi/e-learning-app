@@ -54,7 +54,8 @@ const Navbaar = () => {
             </Nav>
             <Nav className="justify-content-end  d-flex align-items-center">
               <span className="mx-2">{user.email}</span>
-              <Button variant="outline-dark" onClick={handleClick}>Logout</Button>
+              
+              <Button variant="outline-dark" onClick={handleClick}><Nav.Link href="/login">Logout</Nav.Link></Button>
               </Nav>
               </>
           )}

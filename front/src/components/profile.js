@@ -3,7 +3,6 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 
@@ -12,35 +11,38 @@ const TeacherProfilePagee = ({ tea }) => {
  
   const [teacher, setTeacher] = useState({});
   const [show, setShow] = useState(false);
-  const [name, setName] = useState(tea.name);
-  const [phonenumber, setPhonenumber] = useState(tea.phonenumber);
-  const [linkedin, setLinkedin] = useState(tea.linkedin);
-  const [university, setUniversity] = useState(tea.university);
-  const [field, setField] = useState(tea.field);
+  const [name, setName] = useState();
+  const [phonenumber, setPhonenumber] = useState();
+  const [linkedin, setLinkedin] = useState();
+  const [university, setUniversity] = useState();
+  const [field, setField] = useState();
   const { user } = useAuthContext();
 
   useEffect(() => {
-    fetch('/api/teacher/profile', {
-      method: "get",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${user.token}`,
-        Role: `${user.role}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setTeacher(data);
-        setLinkedin(data.linkedin);
-        setField(data.field);
-        setName(data.name);
-        setPhonenumber(data.phonenumber);
-        
+    if(user){
+      fetch('/api/teacher/profile', {
+        method: "get",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+          Role: `${user.role}`,
+        },
       })
-      .catch((err) => {
-        console.log(err);
-      });
-  },[]);
+        .then((res) => res.json())
+        .then((data) => {
+          setTeacher(data);
+          setLinkedin(data.linkedin);
+          setField(data.field);
+          setName(data.name);
+          setPhonenumber(data.phonenumber);
+          
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    
+  },[user]);
 
   
 
@@ -108,14 +110,14 @@ const TeacherProfilePagee = ({ tea }) => {
          <Modal.Title>Edit profile</Modal.Title>
        </Modal.Header>
       <Modal.Body><div className="row">
-  <div class="input-group mb-3">
-    <div class="input-group-prepend ">
-      <span class="input-group-text" id="inputGroup-sizing-default">Name:</span>
+  <div className="input-group mb-3">
+    <div className="input-group-prepend ">
+      <span className="input-group-text" id="inputGroup-sizing-default">Name:</span>
     </div>
 
     <input
       type="text"
-      class="form-control"
+      className="form-control"
       placeholder="Name"
       aria-describedby="inputGroup-sizing-default"
       onChange={e => setName(e.target.value)}
@@ -189,7 +191,7 @@ const TeacherProfilePagee = ({ tea }) => {
 </Modal.Body>
         <Modal.Footer >
         <Button variant="outline-secondary"className="activity-button" id="valider"  
-  onClick={handleUpdate}>Savechanges</Button>
+  onClick={handleUpdate}>Save</Button>
   <Button variant="dark" data-bs-dismiss="modal"  onClick={handleClose}>Cancel</Button>
 
         </Modal.Footer>

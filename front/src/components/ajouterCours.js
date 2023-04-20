@@ -14,12 +14,13 @@ import UploadWidget from "./uploadwidget";
     const [error,setError] = useState("")
     const [show, setShow] = useState(false);
     const [url,setUrl] = useState(null)
+    const [type,setType] = useState(null)
+
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     const addCourse = (e) => {
-      console.log("wilyeyy")
       e.preventDefault()
       if(url && title && categorie && bodyy){
           fetch("/api/courses/create",{
@@ -70,14 +71,14 @@ import UploadWidget from "./uploadwidget";
           <Modal.Body> 
           
           <div className="row">
-          <div class="input-group mb-3">
-          <div class="input-group-prepend ">
-            <span class="input-group-text" id="inputGroup-sizing-default">Title :</span>
+          <div className="input-group mb-3">
+          <div className="input-group-prepend ">
+            <span className="input-group-text" id="inputGroup-sizing-default">Title :</span>
           </div>
 
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             placeholder="Title"
             aria-describedby="inputGroup-sizing-default"
             onChange={e => setTitle(e.target.value)}
@@ -118,7 +119,7 @@ import UploadWidget from "./uploadwidget";
         </div>    
 
         <div className="upload">
-        <UploadWidget changeURL={url=>setUrl(url)}/>
+        <UploadWidget changeURL={url=>setUrl(url)} changeType={type=>setType(type)}/>
         </div>
         </Modal.Body>
 

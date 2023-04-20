@@ -4,6 +4,7 @@ import { useSignup } from "../../hooks/useSignup"
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import back from "../../assets/back.png"
 
 const Signup = () => {
   const [email, setEmail] = useState('')
@@ -18,6 +19,15 @@ const Signup = () => {
   }
 
   return (
+    <>
+    <div style={{ 
+      backgroundImage: `url(${back})`, 
+        height:'93vh',
+        marginTop:'7vh',
+        fontSize:'50px',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat'
+    }}></div>
     <form className="signup">
       <h3>Sign Up</h3>
       
@@ -68,6 +78,7 @@ const Signup = () => {
     <Button disabled={isLoading} variant="dark" onClick={handleSubmit}>Sign Up</Button>
     {error && <div className="error">{error}</div>}
     </form>
+    </>
   )
 }
 

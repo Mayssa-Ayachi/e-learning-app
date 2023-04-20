@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useAuthContext } from "../hooks/useAuthContext"
 
 const AjoutInfo = () => {
   const [name, setName] = useState("");
@@ -9,7 +8,6 @@ const AjoutInfo = () => {
   const [linkedin, setLinkedin] = useState("");
   const [university, setUniversity] = useState("");
   const [field, setField] = useState("");
-  const {user} = useAuthContext()
 
   const [show, setShow] = useState(false);
 
@@ -17,42 +15,6 @@ const AjoutInfo = () => {
   const handleShow = () => setShow(true);
 
 
-
-
-  const addProfile = () => {
-    
-        fetch("/api/teacher/create",{
-            method:"put",
-            headers:{
-                "Content-Type":"application/json",
-                "Authorization": `Bearer ${user.token}`,
-                'Role':`${user.role}`}
-            ,
-            body:JSON.stringify({
-                name,
-                phonenumber,
-                linkedin,
-                university,
-                field,
-                id : user.id,
-                
-                
-          
-
-            
-            })
-        }).then(res=>res.json())
-        .then(()=>{
-            setTimeout(()=>{},2000)
-            handleClose()
-        })
-        .catch(err=>{
-            console.log(err)
-        })
-    
-}
-
-    
 const onSubmitForm = (e)=>{
    if(name && phonenumber&& linkedin && university && field ){
     e.preventDefault()
@@ -147,8 +109,8 @@ const onSubmitForm = (e)=>{
 
 <Modal.Footer>
  <Button variant="light" id="valider"  
-onClick={onSubmitForm}>Valider</Button>
-<Button variant="dark" data-bs-dismiss="modal"  onClick={handleClose}>Fermer</Button>
+onClick={onSubmitForm}>Save</Button>
+<Button variant="dark" data-bs-dismiss="modal"  onClick={handleClose}>close</Button>
 </Modal.Footer>
 </Modal>
  

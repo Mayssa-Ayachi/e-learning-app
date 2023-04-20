@@ -75,14 +75,14 @@ const AjoutActivite = () => {
 
             <Modal.Body> 
             <div className="row">
-          <div class="input-group mb-3">
-          <div class="input-group-prepend ">
-            <span class="input-group-text" id="inputGroup-sizing-default">Title :</span>
+          <div className="input-group mb-3">
+          <div className="input-group-prepend ">
+            <span className="input-group-text" id="inputGroup-sizing-default">Title :</span>
           </div>
 
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             placeholder="Title"
             aria-describedby="inputGroup-sizing-default"
             onChange={e => setTitle(e.target.value)}
