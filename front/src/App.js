@@ -20,7 +20,9 @@ function App() {
   const { role } = {...user}
 
   return (
-    <div className="App">
+    <>
+    
+    <div className="App" >
     <BrowserRouter>
     <Navbaar />
        
@@ -90,6 +92,7 @@ function App() {
       </div>
     </BrowserRouter>
   </div> 
+  </>
   );
 }
 

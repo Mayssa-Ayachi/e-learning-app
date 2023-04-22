@@ -58,7 +58,7 @@ import UploadWidget from "./uploadwidget";
 
     return (
       <Fragment>
-        <button onClick={handleShow} className="activity-button" variant="outline-secondary"><GoPlus color="#BBA14A" fontSize="1.5em" /></button>
+        <button onClick={handleShow} className="add" variant="outline-secondary"><GoPlus color="#BBA14A" fontSize="1.5em" /></button>
 
         <Modal show={show} onHide={handleClose} onExit={reload} backdrop="static">
           <Modal.Header closeButton>

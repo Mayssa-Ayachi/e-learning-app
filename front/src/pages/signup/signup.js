@@ -29,6 +29,7 @@ const Signup = () => {
         backgroundRepeat: 'no-repeat'
     }}></div>
     <form className="signup">
+      <div style={{marginTop:'2vh'}}>
       <h3>Sign Up</h3>
       
       <label>Email address:</label>
@@ -77,6 +78,7 @@ const Signup = () => {
       
     <Button disabled={isLoading} variant="dark" onClick={handleSubmit}>Sign Up</Button>
     {error && <div className="error">{error}</div>}
+    </div>
     </form>
     </>
   )

@@ -40,7 +40,7 @@ form.signup, form.login {
   background: #FBFBFB;
   border-radius: 5px;
   position: absolute;
-
+  border-color: #000000;
 }
 
 /* Activity */
@@ -79,6 +79,12 @@ form.signup, form.login {
 .activity-button{
   position: relative;
   margin: 1vh ;
+}
+.add{
+  border-color: #BBA14A;
+  border-radius: 50%;
+  background-color: #ffffff;
+  
 }
 .image{
   display: block;

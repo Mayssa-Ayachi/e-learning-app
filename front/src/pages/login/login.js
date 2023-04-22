@@ -30,6 +30,7 @@ const Login = () => {
     }}></div>
 
     <form className="login">
+    <div style={{marginTop:'2vh'}}>
       <h3>Log in</h3>
       
       <label>Email address:</label>
@@ -80,6 +81,7 @@ const Login = () => {
 
     <Button variant="dark" disabled={isLoading} onClick={handleSubmit}>Log In</Button>
     {error && <div className="error">{error}</div>}
+    </div>
     </form>
     </>
  

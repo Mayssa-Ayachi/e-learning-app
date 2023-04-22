@@ -41,7 +41,7 @@ import ActivityDetails from "../../components/activitiesDetails"
 
   return (
     <div className="home">
-      <div className="rechercheajout">
+      <div className="rechercheajout" >
       {user.role==="student" && <AjoutCours />}
     
       

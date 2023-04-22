@@ -24,16 +24,17 @@ const ArrowRightIcon = (props) => (
   </svg>
 );
 
-export const Container = styled.div`
+export const Container = styled.div
+`
   position: relative;
   width: 41px;
   height: 32.2px;
   box-sizing: border-box;
   margin-top: 0.9999vh;
   margin-left: 1vh;
-  border: 2px solid #393e46;
+  border: 2px solid ##61DBFB;
   padding: 5px;
-  background: #feffff;
+  background: ##61DBFB;
   transition: all 0.5s;
 
   display: flex;
@@ -47,7 +48,7 @@ export const Container = styled.div`
       width: 30%;
       -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.74);
       box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.74);
-      border: 4px solid #BBA14A;
+      border: 4px solid ##BBA14A;
 
       @media (min-width: 768px) {
         width: 20%;

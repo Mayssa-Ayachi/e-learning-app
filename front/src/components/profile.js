@@ -35,6 +35,7 @@ const TeacherProfilePagee = ({ tea }) => {
           setField(data.field);
           setName(data.name);
           setPhonenumber(data.phonenumber);
+          console.log(data)
           
         })
         .catch((err) => {
@@ -78,11 +79,14 @@ const TeacherProfilePagee = ({ tea }) => {
   return (
     <div className="d-flex justify-content-center align-items-center" style={{height: "100vh"}}>
     <Fragment>
-      <Card className="mb-3 mt-3" style={{ padding: "20px" }}>
+      <Card style={{ width: '23rem'}}>
         <Card.Body>
-          <Card.Title>{teacher.name}</Card.Title>
+          <Card.Title>{teacher.email}</Card.Title>
         </Card.Body>
         <ListGroup variant="flush">
+        <ListGroup.Item>
+            <strong>Name:</strong> {teacher.name}
+          </ListGroup.Item>
           <ListGroup.Item>
             <strong>Phone number:</strong> {teacher.phonenumber}
           </ListGroup.Item>
@@ -97,7 +101,7 @@ const TeacherProfilePagee = ({ tea }) => {
           </ListGroup.Item>
         </ListGroup>
         <Card.Footer>
-        <Button variant="outline-primary" onClick={handleShow} style={{ borderRadius: "5px", margin: "5px" }}>
+        <Button variant="outline-dark" onClick={handleShow} style={{ borderRadius: "5px", margin: "5px" }}>
   Edit
 </Button>
 

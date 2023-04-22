@@ -77,9 +77,12 @@ const StudentProfile = ({ stu }) => {
     <Fragment>
       <Card className="mb-3 mt-3" style={{ padding: "20px" }}>
         <Card.Body>
-          <Card.Title>{student.name}</Card.Title>
+          <Card.Title>{student.email}</Card.Title>
         </Card.Body>
         <ListGroup variant="flush">
+        <ListGroup.Item>
+            <strong>Phone number:</strong> {student.name}
+          </ListGroup.Item>
           <ListGroup.Item>
             <strong>Phone number:</strong> {student.phonenumber}
           </ListGroup.Item>
@@ -94,11 +97,9 @@ const StudentProfile = ({ stu }) => {
           </ListGroup.Item>
         </ListGroup>
         <Card.Footer>
-        <Button variant="outline-primary" onClick={handleShow} style={{ borderRadius: "5px", margin: "5px" }}>
+        <Button variant="outline-dark" onClick={handleShow} style={{ borderRadius: "5px", margin: "5px" }}>
   Edit
-</Button>
-
-         
+</Button>  
         </Card.Footer>
       </Card>
 
@@ -106,75 +107,95 @@ const StudentProfile = ({ stu }) => {
         <Modal.Header closeButton>
          <Modal.Title>Edit profile</Modal.Title>
        </Modal.Header>
-      <Modal.Body className="text-center" style={{ padding: "20px" }}>
-          <Form>
-          <Form.Group controlId="formName">
-  <Form.Label>Name</Form.Label>
-  <Form.Control
-    type="text"
-    placeholder="Name"
-    defaultValue={name}
-    onChange={(e) => setName(e.target.value||"None")}
-    style={{ borderRadius: "5px", border: "none", boxShadow: "none" }}
-  />
-</Form.Group>
+      <Modal.Body><div className="row">
+  <div className="input-group mb-3">
+    <div className="input-group-prepend ">
+      <span className="input-group-text" id="inputGroup-sizing-default">Name:</span>
+    </div>
 
-<Form.Group controlId="formPhonenumber">
-  <Form.Label>Phone number</Form.Label>
-  <Form.Control
-    type="text"
-    placeholder="Phone number"
-    defaultValue={phonenumber}
-    onChange={(e) => setPhonenumber(e.target.value||"None")}
-    style={{ borderRadius: "5px", border: "none", boxShadow: "none" }}
-  />
-</Form.Group>
+    <input
+      type="text"
+      className="form-control"
+      placeholder="Name"
+      aria-describedby="inputGroup-sizing-default"
+      onChange={e => setName(e.target.value)}
+    />
+  </div>
+</div>
 
-<Form.Group controlId="formLinkedin">
-  <Form.Label>Linkedin</Form.Label>
-  <Form.Control
-    type="text"
-    placeholder="LinkedIn"
-    defaultValue={linkedin}
-    onChange={(e) => setLinkedin(e.target.value||"None")}
-    style={{ borderRadius: "5px", border: "none", boxShadow: "none" }}
-  />
-</Form.Group>
+<div className="row">
+  <div className="input-group mb-3">
+    <div className="input-group-prepend ">
+      <span className="input-group-text" id="inputGroup-sizing-default">University:</span>
+    </div>
 
-<Form.Group controlId="formUniversity">
-  <Form.Label>University</Form.Label>
-  <Form.Control
-    type="text"
-    placeholder="University"
-    defaultValue={university}
-    onChange={(e) => setUniversity(e.target.value||"None")}
-    style={{ borderRadius: "5px", border: "none", boxShadow: "none" }}
-  />
-</Form.Group>
+    <input
+      type="text"
+      className="form-control"
+      placeholder="University"
+      aria-describedby="inputGroup-sizing-default"
+      onChange={e => setUniversity(e.target.value)}
+    />
+  </div>
+</div>
 
-<Form.Group controlId="formField">
-  <Form.Label>Field</Form.Label>
-  <Form.Control
-    type="text"
-    placeholder="Field"
-    defaultValue={field}
-    onChange={(e) => setField(e.target.value||"None")}
-    style={{ borderRadius: "5px", border: "none", boxShadow: "none" }}
-  />
-</Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer style={{ padding: "20px" }}>
-        <Button variant="secondary" onClick={handleClose} style={{ borderRadius: "5px", margin: "5px" }}>
-  Close
-</Button>
+<div className="row">
+  <div className="input-group mb-3">
+    <div className="input-group-prepend ">
+      <span className="input-group-text" id="inputGroup-sizing-default">Phone Number:</span>
+    </div>
 
-<Button variant="primary" onClick={handleUpdate} style={{ borderRadius: "5px", margin: "5px" }}>
-  Save Changes
-</Button>
+    <input
+      type="text"
+      className="form-control"
+      placeholder="Phone Number"
+      aria-describedby="inputGroup-sizing-default"
+      onChange={e => setPhonenumber(e.target.value)}
+    />
+  </div>
+</div>
+
+<div className="row">
+  <div className="input-group mb-3">
+    <div className="input-group-prepend ">
+      <span className="input-group-text" id="inputGroup-sizing-default">LinkedIn:</span>
+    </div>
+
+    <input
+      type="text"
+      className="form-control"
+      placeholder="LinkedIn"
+      aria-describedby="inputGroup-sizing-default"
+      onChange={e => setLinkedin(e.target.value)}
+    />
+  </div>
+</div>
+
+<div className="row">
+  <div className="input-group mb-3">
+    <div className="input-group-prepend ">
+      <span className="input-group-text" id="inputGroup-sizing-default">Field:</span>
+    </div>
+
+    <input
+      type="text"
+      className="form-control"
+      placeholder="Field"
+      aria-describedby="inputGroup-sizing-default"
+      onChange={e => setField(e.target.value)}
+    />
+  </div>
+</div>
+</Modal.Body>
+        <Modal.Footer >
+        <Button variant="outline-secondary"className="activity-button" id="valider"  
+  onClick={handleUpdate}>Save</Button>
+  <Button variant="dark" data-bs-dismiss="modal"  onClick={handleClose}>Cancel</Button>
+
         </Modal.Footer>
       </Modal>
     </Fragment>
+    
   </div>
   );
 };
