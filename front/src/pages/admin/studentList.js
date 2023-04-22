@@ -70,7 +70,7 @@ const StudentsList = () => {
           <tbody>
             {students.map(student => (
               <tr key={student._id} id={`student${student._id}`} onClick={() => {
-                let e = document.getElementById(`teacher${student._id}`);
+                let e = document.getElementById(`student${student._id}`);
                 if (e.className !== "table-secondary") {
                   if (row !== "") document.getElementById(row).className = "";
                   e.className = "table-secondary";

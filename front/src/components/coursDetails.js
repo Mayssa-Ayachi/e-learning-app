@@ -15,7 +15,7 @@ const CoursDetails = ({ cours }) => {
 
     return (
 
-      <Card style={{ width: '18rem', height:'18rem'}}>
+      <Card style={{ width: '18rem'}}>
       <Card.Img variant="top" style={{height:'100%'}} src={cours.url} />
       <Card.Body>
         <Card.Title>{cours.title}</Card.Title>
