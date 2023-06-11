@@ -6,7 +6,7 @@
 * [Setup](#setup)
 
 ## General info
-
+An e-learning web application with a recommendation system for students based on their learning styles.
 
 ## Technologies
 The project is created with:
